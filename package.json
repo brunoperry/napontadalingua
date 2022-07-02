@@ -1,0 +1,29 @@
+{
+  "name": "napontadalingua",
+  "version": "1.0.0",
+  "description": "Website for studies center Na Ponta da Lingua",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brunoperry/napontadalingua.git"
+  },
+  "author": "brunoperry",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/brunoperry/napontadalingua/issues"
+  },
+  "homepage": "https://github.com/brunoperry/napontadalingua#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "firebase": "^9.8.4"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.18"
+  }
+}
