@@ -1,21 +1,17 @@
-
-import express from 'express';
-import {initializeApp} from 'firebase/app';
-import NPDLRouter from './routes/NPDLRouter.js';
-// import {express} from 'express';
-// const cors = require('cors');
-import {getDB} from "./config.js";
-// const User = require('./config.js')
-// const NPDLRouter = require('./routes/NPDLRouter');
+import express from "express";
+import NPDLRouter from "./routes/NPDLRouter.js";
 
 const app = express();
-app.use(express.static('public'));
-app.use('/', NPDLRouter);
-// app.use(cors());
+//SETS
+app.set("view engine", "ejs");
 
+//USES
+app.use(express.static("public"));
 
+//ROUTES
+app.use("/", NPDLRouter);
 
 const port = 3000;
 app.listen(port, () => {
-  console.log('Node js Express js Tutorial');
+  console.log("Na Ponta da Lingua running on port 3000");
 });

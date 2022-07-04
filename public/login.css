@@ -1,0 +1,61 @@
+html {
+  background-color: var(--color-b);
+}
+body {
+  max-width: 440px;
+  margin: 0 auto;
+  background-color: var(--color-b);
+}
+
+h1 {
+  text-align: left;
+  align-self: flex-start;
+  color: var(--color-a);
+  margin-bottom: 15px;
+}
+
+form {
+  display: grid;
+  grid-template-areas:
+    "label"
+    "input"
+    "button";
+  grid-gap: 10px;
+  padding: 20px;
+  max-width: 400px;
+  background-color: var(--color-a);
+}
+
+label {
+  font-size: var(--font-size);
+  grid-area: label;
+  font-weight: bold;
+  color: var(--font-color);
+}
+input {
+  height: 32px;
+  border: none;
+  font-size: calc(var(--font-size) / 1.5);
+  height: var(--font-size);
+  grid-area: input;
+  padding: 10px;
+}
+
+button {
+  grid-area: button;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--color-b);
+  cursor: pointer;
+  color: white;
+  padding: 10px;
+  margin: 10px 0;
+  font-weight: 500;
+  font-size: calc(var(--font-size) * 0.7);
+}
+button:hover {
+  transform: scale(1.01);
+}
+button:active {
+  transform: scale(0.97);
+}
