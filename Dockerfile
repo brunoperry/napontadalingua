@@ -1,26 +1,17 @@
-FROM arm64v8/ubuntu
-#FROM ubuntu
-SHELL [ "/bin/bash", "--login", "-c" ]
-RUN apt update
-RUN apt install nodejs -y
-RUN nodejs -v
-RUN apt install npm -y
-RUN npm install pm2 -g
+FROM node:18-alpine as base
 
-# Setup project structure
-COPY backend/public /app/public
-COPY backend/routes /app/routes
-COPY backend/views /app/views
-COPY backend/backend.js /app/backend.js
-COPY backend/server.js /app/server.js
+WORKDIR /src
+COPY package*.json /
+EXPOSE 3000
 
-COPY package-lock.json /app/package-lock.json
-COPY package.json /app/package.json
-
-WORKDIR /app
-
-# Build project code (in the image itself)
+FROM base as production
+ENV NODE_ENV=production
 RUN npm ci
+COPY . /
+CMD ["node", "bin/www"]
 
-# specify the command to run when the image is started
-CMD npm run production
+FROM base as dev
+ENV NODE_ENV=development
+RUN npm install -g nodemon && npm install
+COPY . /
+CMD ["nodemon", "bin/www"]
