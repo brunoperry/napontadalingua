@@ -89,7 +89,7 @@ path {
   transform-box: fill-box;
 }
 
-.logo-container {
+.logo {
   position: relative;
   display: block;
   height: var(--header-height);
