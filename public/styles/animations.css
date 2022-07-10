@@ -2,6 +2,10 @@
   --speed: 2s;
 }
 
+.particle {
+  transition: transform;
+}
+
 /* path {
   animation: pulse 2s infinite;
 } */

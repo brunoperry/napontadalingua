@@ -1,6 +1,7 @@
-import PVector from "../PVector.js";
+import PVector from "../math/PVector.js";
 import Component from "./Component.js";
-import Particle from "./Particle.js";
+import Particle from "./pSystem/Particle.js";
+import ParticleSystem from "./pSystem/ParticleSystem.js";
 
 export default class Logo extends Component {
   #face;
@@ -12,16 +13,18 @@ export default class Logo extends Component {
 
     this.#face = this.querySelector("#face");
 
-    const hairGroup = this.querySelector("#hair").querySelectorAll("path");
-    hairGroup.forEach((elem) => {
-      this.#hair.push(
-        new Particle({
-          view: elem,
-          scale: new PVector(0, 0),
-          mMs: [0.01, 0.02],
-        })
-      );
-    });
+    this.ps = new ParticleSystem(this.element.querySelector("#hair"));
+
+    // const hairGroup = this.querySelector("#hair").querySelectorAll("path");
+    // hairGroup.forEach((elem) => {
+    //   this.#hair.push(
+    //     new Particle({
+    //       view: elem,
+    //       scale: new PVector(0, 0),
+    //       mMs: [0.01, 0.02],
+    //     })
+    //   );
+    // });
   }
 
   stop() {
