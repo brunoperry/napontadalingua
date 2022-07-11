@@ -2,22 +2,22 @@ import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { parse } from "node:url";
-import { generateInstance } from "./factories/heroFactory.js";
-import { routes } from "./routes/heroRoute.js";
+import { generateInstance } from "./factories/npdlFactory.js";
+import { routes } from "./routes/npdlRoute.js";
 import { DEFAULT_HEADER } from "./util/util.js";
 
 const currentDir = dirname(fileURLToPath(import.meta.url));
 const filePath = join(currentDir, "./../db", "data.json");
-const heroService = generateInstance({
+const npdlService = generateInstance({
   filePath,
 });
 
-const heroRoutes = routes({
-  heroService,
+const npdlRoutes = routes({
+  npdlService,
 });
 
 const allRoutes = {
-  ...heroRoutes,
+  ...npdlRoutes,
   //404 routes
   default: (req, res) => {
     res.writeHead(404, DEFAULT_HEADER);
