@@ -3,8 +3,8 @@ export default class NPDLService {
     this.repository = npdlRepo;
   }
 
-  find() {
-    return this.repository.find();
+  uiData() {
+    return this.repository.getUI();
   }
 
   create(data) {

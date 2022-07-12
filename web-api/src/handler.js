@@ -1,16 +1,9 @@
-import { join, dirname } from "node:path";
-import { fileURLToPath } from "node:url";
-
 import { parse } from "node:url";
 import { generateInstance } from "./factories/npdlFactory.js";
 import { routes } from "./routes/npdlRoute.js";
 import { DEFAULT_HEADER } from "./util/util.js";
 
-const currentDir = dirname(fileURLToPath(import.meta.url));
-const filePath = join(currentDir, "./../db", "data.json");
-const npdlService = generateInstance({
-  filePath,
-});
+const npdlService = generateInstance();
 
 const npdlRoutes = routes({
   npdlService,
