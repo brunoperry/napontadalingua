@@ -27,8 +27,10 @@ export default class NPDLRepository {
   async getUI() {
     const uiCol = collection(this.#db, "ui");
     const uiSnapshot = await getDocs(uiCol);
-    const uiList = uiSnapshot.docs.map((ui) => ui.data()[0]);
-    return uiList;
+    const uiList = uiSnapshot.docs.map((ui) => ui.data());
+
+    console.log(uiList);
+    return JSON.stringify(uiList);
   }
 
   //   async #currentFileContent() {

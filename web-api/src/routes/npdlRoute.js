@@ -5,8 +5,12 @@ import { DEFAULT_HEADER } from "../util/util.js";
 const routes = ({ npdlService }) => ({
   "/ui:get": async (req, res) => {
     const ui = await npdlService.uiData();
-    res.write(JSON.stringify(ui));
-    return res.end();
+    res.writeHead(200, DEFAULT_HEADER);
+    // send the data
+    return res.end(ui);
+    // res.send(ui);
+    // res.write(ui);
+    // return res.end();
   },
   "/ui:post": async (req, res) => {
     // const data = await once(req, "data");
