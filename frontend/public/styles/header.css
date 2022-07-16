@@ -3,47 +3,72 @@
 ****************/
 :root {
   --header-padding: 30px;
-  --header-content-height: 108px;
+  --header-content-height: 128px;
 }
 header {
   flex: 1;
+  position: fixed;
   display: flex;
-  flex-direction: column;
-  padding: var(--header-padding);
+  width: 100%;
+  max-height: var(--header-content-height);
+  transition: transform var(--speed) ease-out;
+  padding: 0 var(--header-padding);
   background-color: white;
+  z-index: 9999;
 }
 header .container {
+  flex: 2;
   display: flex;
   justify-content: space-between;
   max-height: var(--header-content-height);
+  padding: var(--padding) 0;
+  background-color: white;
 }
 
-header nav {
+header .menu {
   flex: 1;
   display: flex;
-  justify-content: space-between;
+  max-height: var(--header-content-height);
+  padding: var(--padding) 0;
   align-items: center;
-  gap: var(--padding);
-  transition: transform var(--speed) ease-in-out;
+  background-color: white;
+  transition: transform var(--speed) ease-out;
 }
-
 header .nav-button {
   color: var(--color-b);
   text-decoration: none;
-  font-size: 15px;
   padding: var(--padding);
   transition: color var(--speed) ease, background-color var(--speed) ease;
 }
-header .nav-button:visited {
+
+header .menu-button {
+  flex: 1;
+  display: none;
+  /* max-width: 64px; */
+  height: 64px;
+  align-self: center;
+}
+header .menu-button:visited {
   color: var(--color-b);
 }
-header .nav-button:active,
-header .nav-button:hover {
+header .menu-button:active,
+header .menu-button:hover {
   color: var(--color-c);
   background-color: var(--color-b);
 }
+header .overlay {
+  /* display: none; */
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  background-color: rgba(255, 0, 0, 0.6);
+  transition: opacity var(--speed) ease-out;
+  pointer-events: none;
+}
 header .logo {
   flex: 1;
+  display: flex;
+  align-items: center;
   justify-self: center;
 }
 header .networks {
@@ -52,12 +77,50 @@ header .networks {
   justify-content: flex-end;
 }
 header .network-button {
-  max-width: 42px;
+  max-width: 52px;
   padding: var(--padding);
 }
 
 /***************
 * MEDIA QUERIES STYLES
 ****************/
-@media screen and (max-width: 976px) {
+@media only screen and (max-width: 800px) {
+  :root {
+    --header-content-height: 256px;
+    --font-size: 20.2rem;
+  }
+  header {
+    max-height: none;
+    height: 100%;
+    background-color: transparent;
+  }
+  header .menu {
+    padding-top: var(--header-content-height);
+    position: absolute;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    max-width: 60%;
+    max-height: none;
+    inset: 0;
+    transform: translateX(-100%);
+    z-index: 9999;
+  }
+  header .container {
+    flex: 1;
+  }
+  header .network-button {
+    max-width: 72px;
+  }
+  header .menu-button {
+    display: initial;
+  }
+  header .nav-button {
+    font-size: var(--font-size);
+  }
+  header .menu-button:active,
+  header .menu-button:hover {
+    color: var(--color-b);
+    background-color: transparent;
+  }
 }
