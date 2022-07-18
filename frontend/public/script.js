@@ -1,10 +1,15 @@
+import Gallery from "./components/Gallery.js";
 import Header from "./components/Header.js";
 
 window.onload = async () => {
-  const uiData = await fetch("ui");
-  const res = await uiData.json();
+  // const uiData = await fetch("ui");
+  // const res = await uiData.json();
 
   new Header();
+
+  new Gallery({
+    view: document.querySelector(".gallery"),
+  });
 
   // new Menu(document.querySelector("#menu"));
 

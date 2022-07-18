@@ -7,6 +7,13 @@ export default class Component {
   querySelector(q) {
     return this.#view.querySelector(q);
   }
+  querySelectorAll(q) {
+    return this.#view.querySelectorAll(q);
+  }
+
+  appendChild(elem) {
+    this.#view.appendChild(elem);
+  }
 
   addEventListener(type, ev) {
     this.#view.addEventListener(type, ev);

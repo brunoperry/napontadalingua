@@ -1,3 +1,4 @@
+import Utils, { MAX_WIDTH } from "../Utils.js";
 import Component from "./Component.js";
 import Logo from "./Logo.js";
 import Menu from "./Menu.js";
@@ -5,20 +6,17 @@ import Menu from "./Menu.js";
 export default class Header extends Component {
   #logo = null;
   #nav = null;
-  #networks = null;
-  #menu = null;
 
   #isHidden = false;
+  #isMobile = false;
   constructor() {
     super(document.querySelector("header"));
 
-    this.querySelector(".menu-button").onclick = () => {
-      this.#menu.openClose();
+    this.querySelector(".showhide-menu-button").onclick = () => {
+      this.#nav.openClose();
     };
-
     this.#logo = new Logo(this.querySelector(".logo"));
-    this.#menu = new Menu(this.querySelector(".menu"));
-    this.#networks = new Component(this.querySelector(".networks"));
+    this.#nav = new Menu(this.querySelector("nav"));
 
     let lastScrollPos = window.scrollY;
     const THRESHHOLD = 15;
@@ -26,7 +24,7 @@ export default class Header extends Component {
       const wY = window.scrollY;
       if (lastScrollPos < wY) {
         if (wY - lastScrollPos >= THRESHHOLD && !this.#isHidden) {
-          this.transform = "translateY(-100%)";
+          this.transform = "translateY(calc(var(--header-height) * -1))";
           this.#isHidden = true;
         }
       } else if (this.#isHidden) {
@@ -35,5 +33,20 @@ export default class Header extends Component {
       }
       lastScrollPos = wY;
     };
+
+    window.onresize = () => {
+      let prev = this.#isMobile;
+      this.#isMobile = Utils.isMobile();
+      if (prev === this.#isMobile) return;
+
+      if (!this.#isMobile) {
+        const el = this.#nav.querySelector(".networks");
+        this.elem.appendChild(el);
+      } else {
+        const el = this.querySelector(".networks");
+        this.#nav.appendChild(el);
+      }
+    };
+    window.onresize();
   }
 }

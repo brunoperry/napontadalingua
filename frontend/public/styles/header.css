@@ -3,124 +3,154 @@
 ****************/
 :root {
   --header-padding: 30px;
-  --header-content-height: 128px;
+  --header-height: 256px;
 }
+
 header {
-  flex: 1;
   position: fixed;
-  display: flex;
+  display: grid;
+  grid-template-areas: "menu logo networks";
+  grid-template-columns: 42% auto 172px;
+  grid-template-rows: var(--header-height);
   width: 100%;
-  max-height: var(--header-content-height);
+  height: 100%;
+  top: 0;
+  align-items: stretch;
+  justify-content: stretch;
+  margin: 0 auto;
+  max-width: var(--max-width);
   transition: transform var(--speed) ease-out;
-  padding: 0 var(--header-padding);
-  background-color: white;
-  z-index: 9999;
-}
-header .container {
-  flex: 2;
-  display: flex;
-  justify-content: space-between;
-  max-height: var(--header-content-height);
-  padding: var(--padding) 0;
-  background-color: white;
+  pointer-events: none;
 }
 
 header .menu {
+  grid-area: menu;
   flex: 1;
   display: flex;
-  max-height: var(--header-content-height);
-  padding: var(--padding) 0;
   align-items: center;
-  background-color: white;
-  transition: transform var(--speed) ease-out;
+  justify-content: flex-start;
+  background-color: var(--color-c);
+  transition: none;
+  pointer-events: initial;
 }
-header .nav-button {
-  color: var(--color-b);
-  text-decoration: none;
-  padding: var(--padding);
-  transition: color var(--speed) ease, background-color var(--speed) ease;
+header .networks {
+  grid-area: networks;
+  flex: 1;
+  gap: var(--padding);
+  padding: 0 var(--padding);
+  display: flex;
+  justify-content: flex-end;
+  background-color: var(--color-c);
 }
 
 header .menu-button {
-  flex: 1;
-  display: none;
-  /* max-width: 64px; */
-  height: 64px;
-  align-self: center;
-}
-header .menu-button:visited {
   color: var(--color-b);
+  text-decoration: none;
+  padding: var(--padding);
+  font-size: var(--font-size);
+  transition: color var(--speed) ease, background-color var(--speed) ease;
 }
 header .menu-button:active,
 header .menu-button:hover {
   color: var(--color-c);
+  font-size: var(--font-size);
   background-color: var(--color-b);
 }
-header .overlay {
-  /* display: none; */
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  background-color: rgba(255, 0, 0, 0.6);
-  transition: opacity var(--speed) ease-out;
-  pointer-events: none;
-}
-header .logo {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-self: center;
-}
-header .networks {
-  flex: 1;
-  display: flex;
-  justify-content: flex-end;
-}
 header .network-button {
-  max-width: 52px;
-  padding: var(--padding);
+  flex: 1;
+  max-width: 32px;
 }
 
+header .container {
+  flex: 1;
+  position: absolute;
+  display: flex;
+  max-height: var(--header-height);
+  inset: 0;
+  padding: var(--padding);
+  justify-content: center;
+}
+
+header .logo {
+  grid-area: logo;
+  flex: 1;
+  padding: var(--padding);
+  pointer-events: initial;
+  background-color: var(--color-c);
+}
+header .logo svg {
+  max-width: 532px;
+}
+
+header .showhide-menu-button {
+  grid-area: showhide-menu-button;
+  display: none;
+  pointer-events: initial;
+  padding: var(--padding);
+  background-color: var(--color-c);
+}
+header .showhide-menu-button svg {
+  max-width: 52px;
+}
+
+header .overlay {
+  display: none;
+  position: absolute;
+  inset: 0;
+  opacity: 1;
+  background-color: var(--color-overlay);
+  transition: opacity var(--speed) ease-out;
+  z-index: -1;
+}
+
+header .void {
+  grid-area: void;
+  flex: 1;
+}
 /***************
 * MEDIA QUERIES STYLES
 ****************/
-@media only screen and (max-width: 800px) {
+@media screen and (max-width: 800px) {
   :root {
-    --header-content-height: 256px;
-    --font-size: 20.2rem;
+    --header-height: 128px;
+    --stroke-width: 2px;
   }
+
   header {
-    max-height: none;
-    height: 100%;
-    background-color: transparent;
-  }
-  header .menu {
-    padding-top: var(--header-content-height);
-    position: absolute;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    max-width: 60%;
-    max-height: none;
-    inset: 0;
-    transform: translateX(-100%);
+    grid-template-areas:
+      "logo showhide-menu-button"
+      "menu void";
+    grid-template-columns: auto 64px;
+    grid-template-rows: var(--header-height) auto;
     z-index: 9999;
   }
-  header .container {
-    flex: 1;
+
+  header .menu {
+    position: absolute;
+    inset: 0;
+    max-height: none;
+    flex-direction: column;
+    align-items: flex-start;
+    transform: translateX(-100%);
+    transition: transform var(--speed) ease-out;
   }
-  header .network-button {
-    max-width: 72px;
-  }
-  header .menu-button {
+
+  header .showhide-menu-button {
     display: initial;
+    justify-self: flex-end;
   }
-  header .nav-button {
-    font-size: var(--font-size);
+
+  header .container {
+    background-color: var(--color-c);
   }
-  header .menu-button:active,
-  header .menu-button:hover {
-    color: var(--color-b);
-    background-color: transparent;
+
+  header .void {
+    display: none;
+  }
+
+  header .overlay {
+    display: initial;
+    opacity: 0;
+    pointer-events: initial;
   }
 }

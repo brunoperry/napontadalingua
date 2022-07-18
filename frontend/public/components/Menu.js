@@ -1,3 +1,4 @@
+import Utils from "../Utils.js";
 import Component from "./Component.js";
 
 export default class Menu extends Component {
@@ -8,6 +9,8 @@ export default class Menu extends Component {
 
     this.#overlay = new Component(this.parent.querySelector(".overlay"));
     this.#overlay.addEventListener("click", () => this.openClose());
+    const buttons = this.querySelectorAll(".menu-button");
+    buttons.forEach((btn) => (btn.onclick = () => this.openClose()));
   }
 
   openClose() {
@@ -15,7 +18,7 @@ export default class Menu extends Component {
     let tV = "";
     let oV = 0;
     let pE = "none";
-
+    Utils.lockScroll = this.#isOpen;
     if (this.#isOpen) {
       tV = "0";
       oV = 1;
