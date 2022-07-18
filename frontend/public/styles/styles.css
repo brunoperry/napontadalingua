@@ -3,14 +3,18 @@
   --color-b: #50596a;
   --color-c: #ededed;
   --color-overlay: rgba(0, 0, 0, 0.8);
+  --color-font: #333448;
+  --color-bck: #666e7c;
 
-  --font-family: Bloomberg Logotypes-Medium, sans-serif;
+  --font-family: Roboto, sans-serif;
   --font-size: clamp(0.2rem, 2.5vw, 1.2rem);
 
   --max-width: 1024px;
   --padding: 10px;
 
-  --stroke-width: 2px;
+  --border: solid 10px var(--color-c);
+
+  --stroke-width: 3px;
 
   --speed: 0.2s;
 }
@@ -44,14 +48,20 @@ body {
 html {
   background-image: url("../background.svg");
   background-repeat: repeat;
-  background-size: 128px 128px;
-  background-color: var(--color-a);
+  background-size: 256px 256px;
+  background-color: var(--color-bck);
   background-attachment: fixed;
 }
 
 body {
   display: block;
   overscroll-behavior-y: none;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  overflow-x: hidden;
+  /* border-left: var(--border);
+  border-right: var(--border);
+  border-style: dashed; */
 }
 
 main {
@@ -70,8 +80,25 @@ button {
 *:focus {
   outline: none !important;
 }
-svg {
-  overflow: hidden;
+
+a {
+  display: block;
+  color: var(--color-font);
+  text-decoration: none;
+  line-height: 1.45;
+}
+a:visited {
+  color: var(--color-font);
+}
+
+p {
+  line-height: 1.45;
+  color: var(--color-font);
+}
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /***************

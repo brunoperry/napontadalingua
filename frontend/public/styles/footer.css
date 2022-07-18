@@ -1,0 +1,50 @@
+/***************
+* FOOTER STYLES
+****************/
+footer {
+  display: flex;
+  flex-direction: column;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--padding);
+  background-color: var(--color-b);
+}
+
+footer .partners {
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  grid-template-rows: 128px;
+}
+
+footer .bottom {
+  display: grid;
+  grid-template-columns: 67% 33%;
+  gap: calc(var(--padding) * 2);
+}
+
+footer a,
+footer a:visited,
+footer p {
+  color: var(--color-c);
+}
+
+footer h3 {
+  color: var(--color-font);
+  padding: var(--padding) 0;
+  margin-bottom: var(--padding);
+  font-size: calc(var(--font-size) * 1.5);
+}
+
+/***************
+* MEDIA QUERIES STYLES
+****************/
+@media screen and (max-width: 800px) {
+  footer .partners {
+    display: grid;
+    grid-template-columns: 50% 50%;
+  }
+  footer .bottom {
+    display: flex;
+    flex-direction: column;
+  }
+}

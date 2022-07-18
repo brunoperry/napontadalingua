@@ -14,8 +14,9 @@
 }
 #home .hero {
   display: flex;
-  padding: var(--padding);
   background-color: var(--color-b);
+  min-height: 400px;
+  align-items: center;
 }
 #home .hero p {
   flex: 1;
@@ -53,5 +54,6 @@
   }
   #home .hero {
     flex-direction: column;
+    align-items: normal;
   }
 }

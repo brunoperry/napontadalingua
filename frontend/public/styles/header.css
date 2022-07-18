@@ -24,6 +24,7 @@ header {
   transition: transform var(--speed) ease-out;
   pointer-events: none;
   z-index: 9999;
+  overflow: hidden;
 }
 
 header .menu {
@@ -39,11 +40,7 @@ header .menu {
 header .networks {
   grid-area: networks;
   flex: 1;
-  gap: var(--padding);
-  padding: 0 var(--padding);
-  display: flex;
   justify-content: flex-end;
-  background-color: var(--color-c);
 }
 
 header .menu-button {
@@ -58,10 +55,6 @@ header .menu-button:hover {
   color: var(--color-c);
   font-size: var(--font-size);
   background-color: var(--color-b);
-}
-header .network-button {
-  flex: 1;
-  max-width: 32px;
 }
 
 header .logo {
