@@ -1,7 +1,6 @@
 /***************
 * HOME STYLES
 ****************/
-
 #home {
   display: block;
   background-color: white;
@@ -18,7 +17,7 @@
   padding: var(--padding);
   background-color: var(--color-b);
 }
-#home p {
+#home .hero p {
   flex: 1;
   color: var(--color-c);
   font-weight: 100;
@@ -42,7 +41,9 @@
 
 #home .promo-card {
   flex: 1;
+  max-height: 532px;
 }
+
 /***************
 * MEDIA QUERIES STYLES
 ****************/

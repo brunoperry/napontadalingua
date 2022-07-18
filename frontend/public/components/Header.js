@@ -19,16 +19,17 @@ export default class Header extends Component {
     this.#nav = new Menu(this.querySelector("nav"));
 
     let lastScrollPos = window.scrollY;
-    const THRESHHOLD = 15;
+    const THRESHHOLD = 20;
     window.onscroll = () => {
       const wY = window.scrollY;
       if (lastScrollPos < wY) {
         if (wY - lastScrollPos >= THRESHHOLD && !this.#isHidden) {
-          this.transform = "translateY(calc(var(--header-height) * -1))";
+          this.transform =
+            "translateY(calc(var(--header-height) * -1)) translateX(-50%)";
           this.#isHidden = true;
         }
       } else if (this.#isHidden) {
-        this.transform = "translateY(0)";
+        this.transform = "translateY(0) translateX(-50%)";
         this.#isHidden = false;
       }
       lastScrollPos = wY;
