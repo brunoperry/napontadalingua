@@ -40,6 +40,13 @@ export default class Component {
     return this.#view.opacity;
   }
 
+  get style() {
+    return this.#view.style;
+  }
+  set style(stl) {
+    this.#view.style[stl[0]] = stl[1];
+  }
+
   set pointerEvents(val) {
     this.#view.style.pointerEvents = val;
   }

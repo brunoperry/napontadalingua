@@ -5,49 +5,66 @@ import Menu from "./Menu.js";
 
 export default class Header extends Component {
   #logo = null;
-  #nav = null;
+  #menu = null;
 
   #isHidden = false;
   #isMobile = false;
+
+  #THRESHOLD = 20;
+  #lastScrollYPos;
+
   constructor() {
     super(document.querySelector("header"));
 
     this.querySelector(".showhide-menu-button").onclick = () => {
-      this.#nav.openClose();
+      this.#menu.openClose();
     };
+
     this.#logo = new Logo(this.querySelector(".logo"));
-    this.#nav = new Menu(this.querySelector("nav"));
+    this.#menu = new Menu(
+      this.querySelector(".menu"),
+      this.querySelector(".overlay")
+    );
 
-    let lastScrollPos = window.scrollY;
-    const THRESHHOLD = 20;
-    window.onscroll = () => {
-      const wY = window.scrollY;
-      if (lastScrollPos < wY) {
-        if (wY - lastScrollPos >= THRESHHOLD && !this.#isHidden) {
-          this.transform =
-            "translateY(calc(var(--header-height) * -1)) translateX(-50%)";
-          this.#isHidden = true;
-        }
-      } else if (this.#isHidden) {
-        this.transform = "translateY(0) translateX(-50%)";
-        this.#isHidden = false;
-      }
-      lastScrollPos = wY;
-    };
+    window.onscroll = () => this.#onScroll();
+    window.onresize = () => this.#onResize();
 
-    window.onresize = () => {
-      let prev = this.#isMobile;
-      this.#isMobile = Utils.isMobile();
-      if (prev === this.#isMobile) return;
-
-      if (!this.#isMobile) {
-        const el = this.#nav.querySelector(".networks");
-        this.elem.appendChild(el);
-      } else {
-        const el = this.querySelector(".networks");
-        this.#nav.appendChild(el);
-      }
-    };
     window.onresize();
+
+    requestAnimationFrame(() => {
+      // this.style = this.#menu.style = [
+      //   "transition",
+      //   "transform var(--speed) ease-out",
+      // ];
+      // this.transition = console.log(this.elem);
+    });
+  }
+
+  #onScroll() {
+    const wY = window.scrollY;
+    if (this.#lastScrollYPos < wY) {
+      if (wY - this.#lastScrollYPos >= this.#THRESHOLD && !this.#isHidden) {
+        this.transform = "translateY(calc(var(--header-height) * -1))";
+        this.#isHidden = true;
+      }
+    } else if (this.#isHidden) {
+      this.transform = "translateY(0)";
+      this.#isHidden = false;
+    }
+    this.#lastScrollYPos = wY;
+  }
+
+  #onResize() {
+    let prev = this.#isMobile;
+    this.#isMobile = Utils.isMobile();
+    if (prev === this.#isMobile) return;
+
+    if (!this.#isMobile) {
+      const el = this.#menu.querySelector(".networks");
+      this.elem.appendChild(el);
+    } else {
+      const el = this.querySelector(".networks");
+      this.#menu.appendChild(el);
+    }
   }
 }

@@ -3,7 +3,7 @@
 ****************/
 #home {
   display: block;
-  background-color: white;
+  padding-top: var(--header-height);
 }
 #home .typography {
   display: flex;

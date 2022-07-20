@@ -4,10 +4,11 @@ import Component from "./Component.js";
 export default class Menu extends Component {
   #isOpen = false;
   #overlay = null;
-  constructor(view) {
+  constructor(view, overlayView) {
     super(view);
 
-    this.#overlay = new Component(this.parent.querySelector(".overlay"));
+    this.#overlay = new Component(overlayView);
+
     this.#overlay.addEventListener("click", () => this.openClose());
     const buttons = this.querySelectorAll(".menu-button");
     buttons.forEach((btn) => (btn.onclick = () => this.openClose()));
