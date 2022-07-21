@@ -30,14 +30,6 @@ export default class Header extends Component {
     window.onresize = () => this.#onResize();
 
     window.onresize();
-
-    requestAnimationFrame(() => {
-      // this.style = this.#menu.style = [
-      //   "transition",
-      //   "transform var(--speed) ease-out",
-      // ];
-      // this.transition = console.log(this.elem);
-    });
   }
 
   #onScroll() {
