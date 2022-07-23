@@ -10,7 +10,7 @@
 
   --shadow: 0 5px 5px rgb(0 0 0 / 15%);
 
-  --font-family: "Amiko", sans-serif;
+  --font-family: 'Amiko', sans-serif;
   --font-size: clamp(0.2rem, 2.5vw, 1.2rem);
 
   --max-width: 1024px;
@@ -68,11 +68,6 @@ body {
   max-width: var(--max-width);
   margin: 0 auto;
   overflow-x: hidden;
-
-  /* transition: opacity var(--speed) ease-out; */
-  /* border-left: var(--border);
-  border-right: var(--border);
-  border-style: dashed; */
 }
 
 main {
@@ -80,7 +75,6 @@ main {
   display: block;
   max-width: var(--max-width);
   margin: 0 auto;
-  background-color: var(--color-c);
 }
 button {
   border: none;

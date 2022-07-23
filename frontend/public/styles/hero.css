@@ -1,0 +1,13 @@
+/***************
+* HOME STYLES
+****************/
+#home {
+  display: block;
+  padding-top: var(--header-height);
+}
+
+/***************
+* MEDIA QUERIES STYLES
+****************/
+@media screen and (max-width: 800px) {
+}
