@@ -1,5 +1,6 @@
 export default class Component {
   #view = null;
+  animID = null;
   constructor(view) {
     this.elem = view;
   }
@@ -19,6 +20,18 @@ export default class Component {
     this.#view.addEventListener(type, ev);
   }
 
+  /********************
+   *TRANSFORMS
+   ********************/
+  translate(pos) {}
+  scale(value) {
+    this.transform = `scale(${value})`;
+  }
+  rotate(angle) {}
+
+  /********************
+   * GETTERS / SETTERS
+   ********************/
   set elem(view) {
     this.#view = view;
   }

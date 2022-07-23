@@ -111,6 +111,11 @@ img {
   object-fit: cover;
 }
 
+path {
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
 .inner-section {
   width: 100%;
   max-width: var(--max-width);

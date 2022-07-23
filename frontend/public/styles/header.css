@@ -18,8 +18,8 @@ header {
   transition: transform var(--speed) ease-out;
   z-index: 9999;
   overflow: hidden;
+  border: none;
   border-top: solid 10px var(--color-a);
-  box-sizing: content-box;
 }
 header .container {
   display: flex;
@@ -34,14 +34,10 @@ header .menu {
   flex: 1;
   position: relative;
   display: flex;
+  gap: 12px;
   align-items: center;
   justify-content: flex-end;
-  padding-top: 88px;
-}
-header .networks {
-  position: absolute;
-  top: var(--padding);
-  right: calc(var(--padding) * 2);
+  padding-top: 93px;
 }
 
 header .menu-button {
@@ -50,7 +46,6 @@ header .menu-button {
   padding: var(--padding);
   font-size: var(--header-font-size);
   font-weight: bold;
-  transition: color var(--speed) ease, background-color var(--speed) ease;
 }
 header .menu-button:active,
 header .menu-button:hover {
@@ -60,6 +55,7 @@ header .menu-button:hover {
 
 header .logo {
   flex: 1;
+  max-width: 500px;
   pointer-events: initial;
 }
 
@@ -82,11 +78,6 @@ header .overlay {
   transition: opacity var(--speed) ease-out;
   z-index: -1;
 }
-
-header .void {
-  grid-area: void;
-  flex: 1;
-}
 /***************
 * MEDIA QUERIES STYLES
 ****************/
@@ -95,14 +86,6 @@ header .void {
     --header-height: 128px;
     --stroke-width: 2px;
   }
-
-  /* header {
-    grid-template-areas:
-      "logo showhide-menu-button"
-      "menu void";
-    grid-template-columns: auto 64px;
-    grid-template-rows: var(--header-height) auto;
-  } */
 
   header .menu {
     position: absolute;

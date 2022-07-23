@@ -12,17 +12,9 @@ class Utils {
   static isMobile() {
     return window.innerWidth < 800;
   }
-
-  // static set lockScroll(val) {
-  // let b = document.body;
-  // if (val) {
-  //   b.style.height = "100%";
-  //   b.style.overflow = "hidden";
-  // } else {
-  //   b.style.height = "auto";
-  //   b.style.overflow = "auto";
-  // }
-  // }
+  static randomBetween(min, max) {
+    return Math.random() * max + min;
+  }
 }
 
 export default Utils;
