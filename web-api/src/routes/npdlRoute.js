@@ -2,15 +2,13 @@ import { once } from "node:events";
 import NPDL from "../entities/npdl.js";
 import { DEFAULT_HEADER } from "../util/util.js";
 
+import * as NPDLData from "../../db/data.json" assert { type: "json" };
+
 const routes = ({ npdlService }) => ({
   "/ui:get": async (req, res) => {
     const ui = await npdlService.uiData();
     res.writeHead(200, DEFAULT_HEADER);
-    // send the data
     return res.end(ui);
-    // res.send(ui);
-    // res.write(ui);
-    // return res.end();
   },
   "/ui:post": async (req, res) => {
     // const data = await once(req, "data");
@@ -26,6 +24,14 @@ const routes = ({ npdlService }) => ({
       })
     );
     res.end();
+  },
+  "/images:get": (req, res) => {
+    return res.end(JSON.stringify(NPDLData.default.images));
+  },
+  "/update_images:get": async (req, res) => {
+    const images = await npdlService.imagesData();
+    res.writeHead(200, DEFAULT_HEADER);
+    return res.end(images);
   },
 });
 

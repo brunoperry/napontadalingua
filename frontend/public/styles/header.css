@@ -18,6 +18,10 @@ header {
   transition: transform var(--speed) ease-out;
   z-index: 9999;
   overflow: hidden;
+
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
   border: none;
   border-top: solid 10px var(--color-a);
 }

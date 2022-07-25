@@ -6,6 +6,9 @@ export default class NPDLService {
   uiData() {
     return this.repository.getUI();
   }
+  imagesData() {
+    return this.repository.getImages();
+  }
 
   create(data) {
     return this.repository.create(data);

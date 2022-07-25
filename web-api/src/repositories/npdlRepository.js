@@ -1,9 +1,10 @@
-import { write } from "node:fs";
-import { readFile, writeFile } from "node:fs/promises";
+// import { write } from "node:fs";
+// import { readFile, writeFile } from "node:fs/promises";
 
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, getDocs } from "firebase/firestore/lite";
-import {} from "firebase/firestore";
+import { getStorage, ref, listAll, getDownloadURL } from "firebase/storage";
+// import { getStorage, listAll } from "firebase/firestore";
 
 export default class NPDLRepository {
   #db;
@@ -20,8 +21,6 @@ export default class NPDLRepository {
 
     this.app = initializeApp(firebaseConfig);
     this.#db = getFirestore(this.app);
-
-    // this.file = file;
   }
 
   async getUI() {
@@ -29,21 +28,28 @@ export default class NPDLRepository {
     const uiSnapshot = await getDocs(uiCol);
     const uiList = uiSnapshot.docs.map((ui) => ui.data());
 
-    console.log(uiList);
     return JSON.stringify(uiList);
   }
 
-  //   async #currentFileContent() {
-  //     return JSON.parse(await readFile(this.file));
-  //   }
-
-  //   find() {
-  //     return this.#currentFileContent();
-  //   }
-  //   async create(data) {
-  //     const currentFile = await this.#currentFileContent();
-  //     currentFile.push(data);
-  //     await writeFile(this.file, JSON.stringify(currentFile));
-  //     return data.id;
-  //   }
+  async getImages() {
+    const storage = getStorage();
+    const listRef = ref(storage, "media");
+    let out = [];
+    try {
+      const res = await listAll(listRef);
+      for (let i = 0; i < res.items.length; i++) {
+        const item = res.items[i]._location.path;
+        const url = await getDownloadURL(ref(storage, item));
+        out.push({
+          name: item,
+          url: url,
+        });
+      }
+    } catch (error) {
+      out.push({
+        error: error,
+      });
+    }
+    return JSON.stringify(out);
+  }
 }
