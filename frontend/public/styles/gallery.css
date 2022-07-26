@@ -18,6 +18,4 @@
   inset: 0;
   opacity: 0;
   transition: opacity var(--speed) ease-in-out;
-  background-position: center;
-  background-size: cover;
 }

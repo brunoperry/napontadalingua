@@ -1,0 +1,32 @@
+/***************
+* ABOUT STYLES
+****************/
+#about {
+  display: flex;
+  position: relative;
+  background-color: var(--color-white);
+}
+
+#about .section-tab {
+  background-color: var(--color-c);
+}
+
+#about .inner-section {
+  display: flex;
+  padding-top: 130px;
+}
+
+#about .container {
+  flex: 1;
+}
+#about .image-item {
+  flex: 1;
+  height: 585px;
+  max-width: 390px;
+}
+
+/***************
+* MEDIA QUERIES STYLES
+****************/
+@media screen and (max-width: 800px) {
+}

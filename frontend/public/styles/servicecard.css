@@ -63,9 +63,6 @@
   flex-direction: row-reverse;
 }
 .service-card .image-item {
-  flex: 1;
-  background-position: center;
-  background-size: cover;
   max-width: 512px;
 }
 .service-card p {

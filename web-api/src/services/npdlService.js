@@ -4,22 +4,17 @@ export default class NPDLService {
   }
 
   async data() {
+    const UI = await this.repository.getData("ui");
+    const SERVICES = await this.repository.getData("services");
+    const ABOUT = await this.repository.getData("about");
+    const IMAGES = await this.repository.getImages();
     return JSON.stringify({
-      ui: await this.repository.getData("ui"),
-      services: await this.repository.getData("services"),
-      images: await this.repository.getImages(),
+      ui: UI,
+      services: SERVICES,
+      about: ABOUT[0],
+      images: IMAGES,
     });
   }
-
-  // uiData() {
-  //   return this.repository.getData("ui");
-  // }
-  // servicesData() {
-  //   return this.repository.getData("services");
-  // }
-  // imagesData() {
-  //   return this.repository.getImages();
-  // }
 
   create(data) {
     return this.repository.create(data);

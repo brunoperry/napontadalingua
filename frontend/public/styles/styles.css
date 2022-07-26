@@ -123,6 +123,12 @@ path {
   transform-box: fill-box;
 }
 
+.image-item {
+  flex: 1;
+  background-position: center;
+  background-size: cover;
+}
+
 .inner-section {
   position: relative;
   width: 100%;
@@ -135,6 +141,7 @@ path {
   top: 0;
   left: 0;
   font-size: 3rem;
+  text-transform: uppercase;
   padding: var(--padding);
   color: var(--color-b);
   font-family: var(--font-amiko);
