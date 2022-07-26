@@ -7,11 +7,13 @@ export default class NPDLService {
     const UI = await this.repository.getData("ui");
     const SERVICES = await this.repository.getData("services");
     const ABOUT = await this.repository.getData("about");
+    const CONTACTS = await this.repository.getData("contacts");
     const IMAGES = await this.repository.getImages();
     return JSON.stringify({
       ui: UI,
       services: SERVICES,
       about: ABOUT[0],
+      contacts: CONTACTS[0],
       images: IMAGES,
     });
   }

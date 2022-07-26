@@ -1,0 +1,19 @@
+<section id="contacts">
+  <div class="inner-section">
+    <label class="section-tab">Contatos</label>
+    <div class="container">
+        <div class="contacts-container">
+            <h2>contactos</h2>
+            <a href="tel:+<%= data.contacts.phone_num %>"><%= data.contacts.phone_num %></a>
+            <a href="tel:+<%= data.contacts.mobile_num %>"><%= data.contacts.mobile_num %></a>
+            <a href="mailto:<%= data.contacts.email %>"><%= data.contacts.email %></a>
+        </div>
+        <div class="address-container">
+            <h2>onde estamos?</h2>
+            <a href="http://">
+                <%= data.contacts.address %>
+                <%= data.contacts.cp %> <%= data.contacts.city %>
+            </a>
+        </div>
+    </div>
+</section>
