@@ -1,10 +1,6 @@
-// import { write } from "node:fs";
-// import { readFile, writeFile } from "node:fs/promises";
-
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, getDocs } from "firebase/firestore/lite";
 import { getStorage, ref, listAll, getDownloadURL } from "firebase/storage";
-// import { getStorage, listAll } from "firebase/firestore";
 
 export default class NPDLRepository {
   #db;
@@ -23,13 +19,27 @@ export default class NPDLRepository {
     this.#db = getFirestore(this.app);
   }
 
-  async getUI() {
-    const uiCol = collection(this.#db, "ui");
-    const uiSnapshot = await getDocs(uiCol);
-    const uiList = uiSnapshot.docs.map((ui) => ui.data());
-
-    return JSON.stringify(uiList);
+  async getData(from) {
+    const col = collection(this.#db, from);
+    const colSnapshot = await getDocs(col);
+    const data = colSnapshot.docs.map((res) => res.data());
+    return data;
   }
+
+  // async getUI() {
+  //   const uiCol = collection(this.#db, "ui");
+  //   const uiSnapshot = await getDocs(uiCol);
+  //   const uiList = uiSnapshot.docs.map((ui) => ui.data());
+
+  //   return JSON.stringify(uiList);
+  // }
+  // async getServices() {
+  //   const uiCol = collection(this.#db, "ui");
+  //   const uiSnapshot = await getDocs(uiCol);
+  //   const uiList = uiSnapshot.docs.map((ui) => ui.data());
+
+  //   return JSON.stringify(uiList);
+  // }
 
   async getImages() {
     const storage = getStorage();
@@ -50,6 +60,6 @@ export default class NPDLRepository {
         error: error,
       });
     }
-    return JSON.stringify(out);
+    return out;
   }
 }

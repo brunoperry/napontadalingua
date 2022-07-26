@@ -1,3 +1,5 @@
 <section id="hero">
-  <div class="inner-section"><%- include('./partials/gallery.ejs') %></div>
+  <div class="inner-section">
+    <%- include('./components/gallery.ejs', {images: data.images}) %>
+  </div>
 </section>

@@ -1,3 +1,18 @@
+/***************
+* SERVICES STYLES
+****************/
 #services {
   display: block;
+  position: relative;
+  background-color: var(--color-c);
+}
+
+#services .section-tab {
+  background-color: var(--color-white);
+}
+
+/***************
+* MEDIA QUERIES STYLES
+****************/
+@media screen and (max-width: 800px) {
 }

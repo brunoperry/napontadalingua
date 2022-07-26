@@ -1,0 +1,7 @@
+<div class="gallery">
+  <div class="items-container">
+    <% for(var i=0; i<images.length; i++) { let d = images[i] %>
+      <div class="image-item" style="background-image: url('<%= d.url %>')"></div>
+    <% } %>
+  </div>
+</div>

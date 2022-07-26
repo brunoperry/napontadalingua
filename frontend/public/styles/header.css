@@ -18,20 +18,27 @@ header {
   transition: transform var(--speed) ease-out;
   z-index: 9999;
   overflow: hidden;
-
+  /* 
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   border: none;
-  border-top: solid 10px var(--color-a);
+  border-top: solid 10px var(--color-a); */
 }
-header .container {
+
+header .content {
   display: flex;
   max-height: var(--header-height);
   width: 100%;
   height: 100%;
   pointer-events: initial;
   background-color: var(--color-white);
+}
+
+header .container {
+  display: flex;
+  width: 100%;
+  height: 100%;
 }
 
 header .menu {
@@ -81,6 +88,10 @@ header .overlay {
   background-color: var(--color-overlay);
   transition: opacity var(--speed) ease-out;
   z-index: -1;
+}
+
+header .inner-section {
+  padding: 0;
 }
 /***************
 * MEDIA QUERIES STYLES

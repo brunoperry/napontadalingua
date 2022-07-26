@@ -1,4 +1,4 @@
-import Component from './Component.js';
+import Component from "./Component.js";
 
 export default class Gallery extends Component {
   #items = [];
@@ -6,14 +6,12 @@ export default class Gallery extends Component {
   constructor(data) {
     super(data.view);
 
-    const itms = this.querySelectorAll('.item');
-    if (!itms.length) return;
+    const res = this.elem.querySelectorAll(".image-item");
 
-    itms.forEach((itm) => {
+    res.forEach((itm) => {
       this.#items.push(new Component(itm));
     });
-
-    // this.#crossFade();
+    this.#crossFade();
   }
 
   #crossFade() {
@@ -24,6 +22,6 @@ export default class Gallery extends Component {
       if (this.#currentItemIndex >= this.#items.length)
         this.#currentItemIndex = 0;
       this.#items[this.#currentItemIndex].opacity = 1;
-    }, 3000);
+    }, 6000);
   }
 }

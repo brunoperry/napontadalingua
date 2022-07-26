@@ -15,6 +15,22 @@ class Utils {
   static randomBetween(min, max) {
     return Math.random() * max + min;
   }
+
+  static genView(from, what) {
+    const template = document
+      .querySelector(`#${from}-templates`)
+      .content.cloneNode(true);
+    return template.querySelector(`.${what}-item`);
+  }
+
+  static loadImage(src) {
+    return new Promise((resolve, reject) => {
+      const image = new Image();
+      image.addEventListener("load", resolve);
+      image.addEventListener("error", reject);
+      image.src = src;
+    });
+  }
 }
 
 export default Utils;
