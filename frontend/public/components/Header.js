@@ -1,7 +1,7 @@
-import Utils, { SPEED } from '../Utils.js';
-import Component from './Component.js';
-import Logo from './Logo.js';
-import Menu from './Menu.js';
+import Utils, { SPEED } from "../Utils.js";
+import Component from "./Component.js";
+import Logo from "./Logo.js";
+import Menu from "./Menu.js";
 
 export default class Header extends Component {
   #logo = null;
@@ -14,33 +14,46 @@ export default class Header extends Component {
   #lastScrollYPos;
 
   constructor() {
-    super(document.querySelector('header'));
+    super(document.querySelector("header"));
 
-    this.querySelector('.showhide-menu-button').onclick = () => {
+    this.querySelector(".showhide-menu-button").onclick = () => {
       this.#menu.openClose();
     };
 
-    this.#logo = new Logo(this.querySelector('.logo'));
+    this.#logo = new Logo(this.querySelector(".logo"));
     this.#menu = new Menu(
-      this.querySelector('.menu'),
-      this.querySelector('.overlay')
+      this.querySelector(".menu"),
+      this.querySelector(".overlay")
     );
 
-    window.onscroll = () => this.#onScroll();
-    window.onresize = () => this.#onResize();
+    // window.onscroll = () => this.#onScroll();
+    // window.onresize = () => this.#onResize();
 
-    window.onresize();
+    // window.onresize();
+
+    this.#onResize();
   }
 
   show() {
-    this.transform = 'translateY(0)';
+    this.transform = "translateY(0)";
     this.#isHidden = false;
     this.#logo.start();
   }
   hide() {
-    this.transform = 'translateY(calc(var(--header-height) * -1))';
+    this.transform = "translateY(calc(var(--header-height) * -1))";
     this.#isHidden = true;
     setTimeout(() => this.#logo.stop(), SPEED);
+  }
+
+  update(type) {
+    switch (type) {
+      case "scroll":
+        this.#onScroll();
+        break;
+      case "resize":
+        this.#onResize();
+        break;
+    }
   }
 
   #onScroll() {
@@ -57,13 +70,6 @@ export default class Header extends Component {
     let prev = this.#isMobile;
     this.#isMobile = Utils.isMobile();
     if (prev === this.#isMobile) return;
-
-    if (!this.#isMobile) {
-      const el = this.#menu.querySelector('.networks');
-      this.elem.appendChild(el);
-    } else {
-      const el = this.querySelector('.networks');
-      this.#menu.appendChild(el);
-    }
+    if (!this.#isMobile && !this.#menu.isOpen) this.#menu.reset();
   }
 }

@@ -4,7 +4,6 @@ export class SVG extends Component {
   constructor(view) {
     super(view);
   }
-
   get fillColor() {
     return this.elem.style.fillColor;
   }

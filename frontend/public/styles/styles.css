@@ -21,6 +21,8 @@
 
   --stroke-width: 3px;
 
+  --mobile-query: 956px;
+
   --speed: 0.3s;
 }
 
@@ -155,8 +157,15 @@ path {
 /***************
 * MEDIA QUERIES STYLES
 ****************/
-@media only screen and (max-device-width: 800px) {
+@media only screen and (max-device-width: 956px) {
   :root {
     --font-size: 1rem;
+  }
+  section {
+    padding-bottom: 10px;
+  }
+  .section-tab {
+    right: 0;
+    text-align: center;
   }
 }

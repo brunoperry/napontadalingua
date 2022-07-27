@@ -73,5 +73,29 @@
 /***************
 * MEDIA QUERIES STYLES
 ****************/
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 956px) {
+  :root {
+    --sc-padding: 20px;
+  }
+  .service-card .container {
+    flex-direction: column;
+    height: auto;
+  }
+  .service-card .void {
+    display: none;
+  }
+  .service-card .title {
+    grid-template-rows: none;
+    padding: 5px;
+  }
+  .service-card .image-item {
+    min-height: 256px;
+  }
+  .service-card p {
+    padding: 7px;
+  }
+
+  .service-card .container.invert {
+    flex-direction: column;
+  }
 }

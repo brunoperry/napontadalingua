@@ -31,5 +31,12 @@
 /***************
 * MEDIA QUERIES STYLES
 ****************/
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 956px) {
+  #partners .inner-section {
+    padding: 7px;
+    flex-direction: column;
+    gap: 20px;
+    padding-top: 130px;
+    padding-bottom: 20px;
+  }
 }

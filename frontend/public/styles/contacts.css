@@ -30,5 +30,11 @@
 /***************
 * MEDIA QUERIES STYLES
 ****************/
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 956px) {
+  #contacts .container {
+    padding: 7px;
+    flex-direction: column;
+    gap: 20px;
+    padding-bottom: 20px;
+  }
 }

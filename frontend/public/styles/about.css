@@ -16,6 +16,7 @@
   padding-top: 130px;
 }
 
+#about .top-container,
 #about .container {
   flex: 1;
 }
@@ -28,5 +29,16 @@
 /***************
 * MEDIA QUERIES STYLES
 ****************/
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 956px) {
+  #about .inner-section {
+    flex-direction: column;
+  }
+  #about .container {
+    position: absolute;
+    bottom: 0;
+    padding: 0 7px;
+    padding-top: 130px;
+    padding-bottom: 20px;
+    background-color: rgba(229, 229, 229, 0.85);
+  }
 }

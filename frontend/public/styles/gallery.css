@@ -19,3 +19,9 @@
   opacity: 0;
   transition: opacity var(--speed) ease-in-out;
 }
+
+/***************
+* MEDIA QUERIES STYLES
+****************/
+@media screen and (max-width: 956px) {
+}
