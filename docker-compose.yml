@@ -8,3 +8,17 @@ services:
     build: ./web-api
     ports:
       - 3001:3001
+# version: '3.8'
+# services:
+
+#   nginx1:
+#     image: arm64v8/nginx
+#     container_name: nginx1
+#     ports:
+#       - 81:80
+
+#   nginx2:
+#     image: arm64v8/nginx
+#     container_name: nginx2
+#     ports:
+#       - 82:80
