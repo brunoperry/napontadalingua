@@ -1,7 +1,10 @@
 <div class="gallery">
   <div class="items-container">
-    <% for(var i=0; i<images.length; i++) { let d = images[i] %>
-      <div class="image-item" style="background-image: url('<%= d.url %>')"></div>
+    <% for(var i=0; i<gallery.length; i++) { let item = gallery[i] %>
+      <div class="image-item" style="background-image: url('<%= item.image_url %>')"></div>
+      <%- include (item.component)  %>
+
+      <!-- <div>aksjhdkajshd</div> -->
     <% } %>
   </div>
 </div>

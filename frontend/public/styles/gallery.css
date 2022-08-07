@@ -11,13 +11,27 @@
   position: relative;
   display: flex;
   flex: 1;
-  height: var(--item-height);
+  height: 100%;
 }
 .gallery .image-item {
   position: absolute;
   inset: 0;
   opacity: 0;
   transition: opacity var(--speed) ease-in-out;
+}
+.image-item.visible {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity var(--speed) ease-in-out;
+}
+
+.lazy-background {
+  /* background-image: url("hero-placeholder.jpg"); */
+}
+
+.lazy-background.visible {
+  /* background-image: url("hero.jpg"); */
 }
 
 /***************

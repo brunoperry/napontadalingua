@@ -5,9 +5,9 @@ let siteData = null;
 try {
   let res = await fetch(`${URL}/data`);
   siteData = await res.json();
-} catch (error) {}
 
-// console.log(siteData.partners);
+  siteData.images.forEach((obj) => (obj.component = `./${obj.component}.ejs`));
+} catch (error) {}
 
 const app = express();
 app.use(express.static("public"));

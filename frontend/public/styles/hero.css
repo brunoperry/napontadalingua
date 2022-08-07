@@ -2,17 +2,30 @@
 * HOME STYLES
 ****************/
 #hero {
-  display: block;
+  display: flex;
+  background-color: var(--color-b);
+  height: 100%;
+  padding-top: var(--header-height);
+  align-items: stretch;
 }
 #hero .inner-section {
   padding: 0;
-  height: calc(100% - var(--header-height));
+  flex: 1;
+  height: 100%;
+}
+#hero .gallery {
+  padding: 0;
+  flex: 1;
+  height: 100%;
 }
 
 /***************
 * MEDIA QUERIES STYLES
 ****************/
 @media screen and (max-width: 956px) {
+  #hero {
+    padding-top: var(--header-height);
+  }
   #hero .inner-section {
     padding: 0;
   }

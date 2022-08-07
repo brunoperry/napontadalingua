@@ -64,6 +64,29 @@ header .logo {
   pointer-events: initial;
 }
 
+.logo .hair-container {
+  position: absolute;
+  display: flex;
+  top: 0;
+  left: 0;
+  width: 120px;
+  height: 58px;
+  transform-origin: bottom right;
+  /* background-color: rgba(0, 0, 255, 0.169); */
+  transform: rotate(-40deg) translate(-25px, 5px);
+}
+
+.logo .particle {
+  position: absolute;
+  transform-origin: center;
+}
+.logo .debug {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 99999;
+}
+
 header .showhide-menu-button {
   grid-area: showhide-menu-button;
   display: none;
