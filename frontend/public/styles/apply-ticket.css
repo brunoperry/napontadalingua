@@ -1,5 +1,11 @@
+/***************
+* APPLY-TICKET STYLES
+****************/
 .apply-ticket {
   position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   inset: 0;
   right: 50%;
 }
@@ -13,14 +19,34 @@
 .apply-ticket .ticket {
   position: absolute;
   display: block;
-  inset: 10%;
+  inset: auto 10%;
+  /* top: auto;
+  bottom: auto; */
   background-color: var(--color-c);
   mix-blend-mode: normal;
+  padding: 30px;
 }
 
-.apply-ticket .title {
-  /* position: absolute; */
-  /* background-color: red; */
+.apply-ticket h2 {
+  margin-bottom: 40px;
+}
+.apply-ticket h3 {
+  margin-bottom: 10px;
+}
+.apply-ticket ul {
+  padding-left: 15px;
+  margin-bottom: 40px;
+}
+.apply-ticket li {
+  font-family: var(--font-roboto);
+  font-size: var(--font-size);
+  color: var(--color-font);
+  padding: 3px 0;
+}
+
+.apply-ticket .container {
+  display: flex;
+  gap: var(--padding);
 }
 
 /***************
@@ -32,6 +58,18 @@
   }
 
   .apply-ticket .ticket {
-    inset: 5%;
+    inset: auto 5%;
+    /* bottom: auto; */
+    padding: 20px 10px;
+  }
+
+  .apply-ticket h2 {
+    margin-bottom: 20px;
+  }
+  .apply-ticket h3 {
+    margin-bottom: 20px;
+  }
+  .apply-ticket .container {
+    gap: calc(var(--padding) / 2);
   }
 }

@@ -14,7 +14,13 @@ class Utils {
   static isMobile() {
     return window.innerWidth < 800;
   }
-  static randomBetween(min, max) {
+  static randomBetween(min, max, posNeg = false) {
+    if (posNeg)
+      return (
+        Math.ceil(Math.random() * max + min) *
+        (Math.round(Math.random()) ? 1 : -1)
+      );
+
     return Math.random() * max + min;
   }
   static genView(from, what) {
@@ -32,6 +38,18 @@ class Utils {
     });
   }
 
+  static parseMatrix(matString) {
+    let out = [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1];
+    const res = matString
+      .replace(/[a-zA-Z]+\(/i, "")
+      .replace(")", "")
+      .split(", ");
+
+    if (res.length <= 6) return out;
+    res.forEach((x, index) => (out[index] = parseFloat(x)));
+    return out;
+  }
+
   static getDistance(from, to) {
     return Math.abs(
       Math.sqrt(
@@ -40,76 +58,46 @@ class Utils {
     );
   }
 
-  static BestCandidate(numPoints, w, h) {
-    let out = [];
-
-    const NUM_SAMPLES = 10;
-    const NUM_POINTS = numPoints;
-    const WIDTH = w;
-    const HEIGHT = h;
-
-    let activeCandidateX = [];
-    let activeCandidateY = [];
-
-    const findClosestPoint = (rX, rY) => {
-      let closestPoint = [];
-      let closestDistance = Infinity;
-      for (let i = 0; i < activeCandidateX.length; i++) {
-        const distance = this.getDistance(
-          { x: rX, y: rY },
-          { x: activeCandidateX[i], y: activeCandidateY[i] }
-        );
-        if (distance < closestDistance) {
-          closestDistance = distance;
-          closestPoint[0] = activeCandidateX[i];
-          closestPoint[1] = activeCandidateY[i];
-        }
-      }
-
-      return closestPoint;
-    };
-
-    const getBestCandidate = () => {
-      let bestDistance = 0;
-      let bestCandidateX, bestCandidateY;
-      for (let i = 0; i < NUM_SAMPLES; i++) {
-        const candidateX = parseInt(Math.random() * WIDTH);
-        const candidateY = parseInt(Math.random() * HEIGHT);
-        const closestPoint = findClosestPoint(candidateX, candidateY);
-        const distance = this.getDistance(
-          { x: closestPoint[0], y: closestPoint[1] },
-          { x: candidateX, y: candidateY }
-        );
-        if (distance > bestDistance) {
-          bestDistance = distance;
-          bestCandidateX = candidateX;
-          bestCandidateY = candidateY;
-        }
-      }
-      return [bestCandidateX, bestCandidateY];
-    };
-
-    const rX = parseInt(Math.random() * WIDTH);
-    const rY = parseInt(Math.random() * HEIGHT);
-
-    out.push(new PVector(rX, rY));
-    activeCandidateX.push(rX);
-    activeCandidateY.push(rY);
-
-    for (let i = 1; i < NUM_POINTS; i++) {
-      const bestCandidate = getBestCandidate();
-      activeCandidateX.push(bestCandidate[0]);
-      activeCandidateY.push(bestCandidate[1]);
-      out.push(new PVector(bestCandidate[0], bestCandidate[1]));
-    }
-
-    return out;
-  }
-
   static getTemplate(name) {
     return document.querySelector(`#${name}-template`).content.cloneNode(true)
       .children;
   }
+
+  static getChildren(fromElem) {
+    let out = [];
+    for (let i = 0; i < fromElem.children.length; i++) {
+      out.push(fromElem.children[i].cloneNode(true));
+    }
+    return out;
+  }
+
+  static getRandomElement(from) {
+    return from[parseInt(this.randomBetween(0, from.length - 1))].cloneNode(
+      true
+    );
+  }
 }
+
+Math.lerp = (start, end, timeElapsed) => {
+  return start * (1 - timeElapsed) + end * timeElapsed;
+};
+
+Array.prototype.shuffle = (array) => {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+};
+
+Math.smoothstep = (start, end, x) => {
+  if (x < start) return 0;
+  if (x >= end) return 1;
+
+  // Scale/bias into [0..1] range
+  x = (x - start) / (end - start);
+
+  return x * x * (3 - 2 * x);
+};
 
 export default Utils;

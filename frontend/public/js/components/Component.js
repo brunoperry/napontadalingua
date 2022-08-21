@@ -1,123 +1,90 @@
-import PVector from "../math/PVector.js";
+import Transform from "./Transform.js";
 
-export default class Component {
-  #view = null;
+export default class Component extends Transform {
+  #elem = null;
   animID = null;
-  #position = new PVector();
-  #rotation = 0;
-  #scale = 1;
 
   constructor(view) {
-    this.elem = view;
+    super();
+    this.#elem = view;
   }
 
   querySelector(q) {
-    return this.#view.querySelector(q);
+    return this.#elem.querySelector(q);
   }
   querySelectorAll(q) {
-    return this.#view.querySelectorAll(q);
+    return this.#elem.querySelectorAll(q);
   }
 
   appendChild(elem) {
-    this.#view.appendChild(elem);
+    this.#elem.appendChild(elem);
   }
   removeChild(elem) {
-    this.#view.removeChild(elem);
+    this.#elem.removeChild(elem);
   }
 
   addEventListener(type, ev) {
-    this.#view.addEventListener(type, ev);
+    this.#elem.addEventListener(type, ev);
   }
 
-  /********************
-   *TRANSFORMS
-   ********************/
-  Translate(pos) {
-    this.#position = pos;
-    this.#doTransform();
-  }
-  Scale(value) {
-    this.#scale = value;
-    this.#doTransform();
-  }
-  Rotate(angle) {
-    this.#rotation = angle;
-    this.#doTransform();
-  }
-
-  #doTransform() {
-    this.#view.style.transform = ` rotate(${this.#rotation}deg) translate(${
-      this.#position.x
-    }px, ${this.#position.y}px) scale(${this.#scale})`;
+  onUpdate() {
+    this.style.transform = this.transformMatrix;
   }
 
   /********************
    * GETTERS / SETTERS
    ********************/
-  set elem(view) {
-    this.#view = view;
+  set view(elem) {
+    this.#elem = elem;
   }
-  get elem() {
-    return this.#view;
-  }
-
-  set transform(value) {
-    this.#view.style.transform = value;
-  }
-  get transform() {
-    return this.#view.style.transform;
+  get view() {
+    return this.#elem;
   }
 
-  set opacity(val) {
-    this.#view.style.opacity = val;
+  set alpha(val) {
+    this.style.opacity = val;
   }
-  get opacity() {
-    return this.#view.opacity;
+  get alpha() {
+    return this.style.opacity;
   }
 
   get style() {
-    return this.#view.style;
+    return this.#elem.style;
   }
   set style(stl) {
-    this.#view.style[stl[0]] = stl[1];
+    this.#elem.style[stl[0]] = stl[1];
+  }
+
+  get computedStyle() {
+    return window.getComputedStyle(this.#elem);
   }
 
   set pointerEvents(val) {
-    this.#view.style.pointerEvents = val;
+    this.#elem.style.pointerEvents = val;
   }
   get pointerEvents() {
-    return this.#view.pointerEvents;
+    return this.#elem.pointerEvents;
   }
 
   get parent() {
-    return this.#view.parentElement;
-  }
-
-  set x(val) {
-    this.#view.offsetLeft = val;
-  }
-  get x() {
-    return this.#view.offsetLeft;
-  }
-
-  set y(val) {
-    this.#view.style.transform = `translateY(${val}px)`;
-  }
-  get y() {
-    return this.#view.offsetTop;
+    return this.#elem.parentElement;
   }
 
   set width(val) {
-    this.#view.style.width = val;
+    this.#elem.style.width = val;
   }
   get width() {
     return this.elem;
   }
 
   set height(val) {
-    this.#view.style.height = val;
+    this.#elem.style.height = val;
   }
   get height() {
-    return this.#view.offsetHeight;
+    return this.#elem.offsetHeight;
+  }
+
+  set transform(val) {
+    this.style.transform = val;
   }
 }

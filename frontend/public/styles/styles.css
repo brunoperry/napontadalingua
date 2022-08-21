@@ -13,6 +13,9 @@
   --font-amiko: "Amiko", sans-serif;
   --font-roboto: "Roboto", sans-serif;
   --font-size: clamp(0.2rem, 2.5vw, 1.2rem);
+  --title-size: clamp(1.6rem, 2.5vw, 3.2rem);
+  --subtitle-size: clamp(1.1rem, 2.5vw, 1.6rem);
+  --label-size: clamp(1rem, 2.5vw, 1.3rem);
 
   --max-width: 1256px;
   --padding: 10px;
@@ -78,21 +81,16 @@ main {
   margin: 0 auto;
 }
 
-section {
-  /* padding: 80px 0; */
-  /* padding-bottom: 80px; */
-}
-button {
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
-}
+/* section {
+  padding: 80px 0;
+  padding-bottom: 80px;
+} */
 *:focus {
   outline: none !important;
 }
 
 a {
-  display: block;
+  display: flex;
   color: var(--color-font);
   text-decoration: none;
   line-height: 1.45;
@@ -106,6 +104,13 @@ h2,
 h3,
 h4 {
   color: var(--color-font);
+}
+
+h2 {
+  font-size: var(--title-size);
+}
+h3 {
+  font-size: var(--subtitle-size);
 }
 
 p {
@@ -158,11 +163,49 @@ path {
 }
 
 /***************
+* BUTTON STYLES
+****************/
+button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.button {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  cursor: pointer;
+  font-size: var(--label-size);
+  font-weight: bold;
+  background-color: transparent;
+  border-radius: 5px;
+}
+.button:hover {
+  transform: scale(1.02);
+}
+.button:active {
+  transform: scale(0.98);
+}
+.button.yellow {
+  background-color: var(--color-orange);
+  color: var(--color-c);
+}
+.button.blue-border {
+  color: var(--color-a);
+  border: var(--stroke-width) solid var(--color-a);
+}
+/***************
 * MEDIA QUERIES STYLES
 ****************/
 @media only screen and (max-device-width: 956px) {
   :root {
     --font-size: 1rem;
+  }
+  body {
+    /* padding: 0 10px; */
   }
   section {
     padding-bottom: 10px;

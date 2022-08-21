@@ -114,10 +114,15 @@ header .inner-section {
 /***************
 * MEDIA QUERIES STYLES
 ****************/
+@media screen and (max-width: 1256px) {
+  header .content {
+    padding: 0 10px;
+  }
+}
 @media screen and (max-width: 956px) {
   :root {
     --header-height: 128px;
-    --stroke-width: 2px;
+    /* --stroke-width: 2px; */
   }
 
   header .inner-section {
@@ -148,7 +153,7 @@ header .inner-section {
   header .container {
     flex: 1;
     justify-content: space-between;
-    padding: var(--padding);
+    /* padding: 0 var(--padding); */
     column-gap: var(--padding);
   }
   header .networks {

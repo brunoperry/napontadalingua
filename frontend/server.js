@@ -16,6 +16,12 @@ app.set("view engine", "ejs");
 app.get("/dev", (req, res) => {
   res.render("index");
 });
+app.get("/inscricoes", (req, res) => {
+  res.render("application_form");
+});
+app.get("/test", (req, res) => {
+  res.render("test");
+});
 
 app.get("/", (req, res) => {
   res.render("index", {

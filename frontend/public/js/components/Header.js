@@ -26,17 +26,17 @@ export default class Header extends Component {
       this.querySelector(".menu"),
       this.querySelector(".overlay")
     );
-
-    this.#onResize();
   }
 
   show() {
-    this.transform = "translateY(0)";
+    this.translate(new PVector());
+    this.onUpdate();
     this.#isHidden = false;
     this.#logo.start();
   }
   hide() {
-    this.transform = "translateY(calc(var(--header-height) * -1))";
+    this.translate(new PVector(0, -this.#logo.height));
+    this.onUpdate();
     this.#isHidden = true;
     setTimeout(() => this.#logo.stop(), SPEED);
   }
@@ -69,6 +69,7 @@ export default class Header extends Component {
   }
 
   #onResize() {
+    this.#logo.onresize();
     let prev = this.#isMobile;
     this.#isMobile = Utils.isMobile();
     if (prev === this.#isMobile) return;

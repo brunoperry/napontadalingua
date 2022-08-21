@@ -1,46 +1,66 @@
-import { ParticleSystem } from "../math/ParticleSystem.js";
+import { FlameSystem } from "./ParticleSystem.js";
+import Utils from "../Utils.js";
 import { SVG } from "./SVG.js";
 
 export default class Logo extends SVG {
-  #particlesElems = [];
-  #systems = [];
-
+  #flameSystem;
+  #hairElements = [];
+  #emitter;
+  #levelOfDetail = 1;
   constructor(view) {
     super(view);
 
-    const containerElement = this.elem.querySelector("#hair");
-
-    const paths = containerElement.children;
-    const NUM_PARTICLES = paths.length;
-    for (let i = 0; i < NUM_PARTICLES; i++)
-      this.#particlesElems.push(paths[i].cloneNode(true));
-
-    for (let i = 0; i < NUM_PARTICLES; i++)
-      this.#systems.push(
-        new ParticleSystem(containerElement, this.#particlesElems)
-      );
-    // containerElement.innerHTML = "";
-    // this.start();
+    this.#emitter = this.view.querySelector("#hair");
+    for (let i = 0; i < this.#emitter.children.length; i++) {
+      this.#hairElements.push(i);
+    }
+    this.#hairElements = Array.prototype.shuffle(this.#hairElements);
+    this.#flameSystem = new FlameSystem({
+      view: this.#emitter,
+      particleElems: Utils.getChildren(this.#emitter),
+      direction: -42,
+    });
   }
 
   stop() {
     if (!this.isRunning) return;
     cancelAnimationFrame(this.animID);
     this.animID = null;
-    this.#systems.forEach((ps) => ps.stop());
+    this.#flameSystem.stop();
     this.isRunning = false;
   }
   start() {
     if (this.isRunning) return;
-    this.draw();
-    this.#systems.forEach((ps) => ps.start());
+    // this.#flameSystem.start();
+    // this.#draw();
     this.isRunning = true;
   }
-  draw() {
-    this.#systems.forEach((ps) => {
-      ps.run();
-    });
+  #draw() {
+    this.#flameSystem.onUpdate();
+    this.animID = requestAnimationFrame(() => this.#draw());
+  }
 
-    this.animID = requestAnimationFrame(() => this.draw());
+  onresize() {
+    if (window.innerWidth < 956) {
+      this.lod = 3;
+    } else {
+      this.lod = 1;
+    }
+  }
+
+  set lod(val) {
+    if (val === this.#levelOfDetail) return;
+    this.#levelOfDetail = val;
+    const children = this.#emitter.children;
+    for (let i = 0; i < this.#hairElements.length; i++) {
+      children[this.#hairElements[i]].style.transform = "scale(1)";
+    }
+    if (val === 1) return;
+    for (let i = 0; i < this.#hairElements.length; i += val) {
+      children[this.#hairElements[i]].style.transform = "scale(1.1)";
+    }
+  }
+  get lod() {
+    return this.#levelOfDetail;
   }
 }

@@ -1,3 +1,4 @@
+import PVector from "../math/PVector.js";
 import Utils from "../Utils.js";
 import Component from "./Component.js";
 
@@ -20,7 +21,8 @@ export default class Menu extends Component {
 
   reset() {
     this.isOpen = false;
-    this.transform = "translateX(0)";
+    this.translate(new PVector());
+    // this.transform = "translateX(0)";
     this.#overlay.opacity = 1;
     this.#overlay.pointerEvents = "none";
   }

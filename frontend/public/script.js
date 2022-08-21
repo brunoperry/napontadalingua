@@ -23,6 +23,5 @@ window.onload = async () => {
     header.update("focus_in");
     // gallery.start();
   };
-
   window.onresize();
 };
