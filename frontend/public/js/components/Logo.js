@@ -53,7 +53,8 @@ export default class Logo extends SVG {
     this.#levelOfDetail = val;
     const children = this.#emitter.children;
     for (let i = 0; i < this.#hairElements.length; i++) {
-      children[this.#hairElements[i]].style.transform = "scale(1)";
+      let sVal = val === 1 ? "scale(1)" : "scale(0.9)";
+      children[this.#hairElements[i]].style.transform = sVal;
     }
     if (val === 1) return;
     for (let i = 0; i < this.#hairElements.length; i += val) {

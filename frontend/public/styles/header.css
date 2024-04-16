@@ -162,6 +162,11 @@ header .inner-section {
     padding: var(--padding);
   }
 
+  #cdl {
+    transform: scale(1.2) translate(-25px, 5px);
+    transform-origin: bottom left;
+  }
+
   header .overlay {
     display: initial;
     opacity: 0;

@@ -48,6 +48,13 @@ export default class Component extends Transform {
     return this.style.opacity;
   }
 
+  set opacity(val) {
+    this.style.opacity = val;
+  }
+  get opacity() {
+    return this.style.opacity;
+  }
+
   get style() {
     return this.#elem.style;
   }
@@ -86,5 +93,8 @@ export default class Component extends Transform {
 
   set transform(val) {
     this.style.transform = val;
+  }
+  get transform() {
+    return this.style.transform;
   }
 }
