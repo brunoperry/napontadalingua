@@ -23,7 +23,7 @@ class HomeController extends Controller
             'js' => 'home',
             'start' => [
                 'gallery' => $gallery_images,
-                'card-title' => 'Inscrições abertas 2022/2023',
+                'card-title' => 'Inscrições abertas 2024/2025',
                 'card-subtitle' => 'Inscrições abertas para:',
                 'services' => $services
             ],
