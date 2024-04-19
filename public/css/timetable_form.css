@@ -1,0 +1,186 @@
+#timetable {
+    --border: 0.5px solid var(--color-neutral-500);
+    justify-content: center;
+    overflow-y: scroll;
+}
+
+#timetable h4 {
+    color: var(--color-neutral-500);
+    font-size: 1.2rem;
+    padding-bottom: 5px;
+}
+
+#timetable h4 sup {
+    color: var(--color-neutral-500);
+    font-size: 0.7rem;
+}
+
+#timetable .note {
+    color: red;
+    font-size: 0.7rem;
+    margin-top: 3px;
+}
+
+#timetable .note sup {
+    color: red;
+}
+
+#timetable .table {
+    display: grid;
+    grid-template-areas:
+        "void monday tuesday wednesday thursday friday"
+        "morning morning-monday morning-tuesday morning-wednesday morning-thursday morning-friday"
+        "afternoon afternoon-monday afternoon-tuesday afternoon-wednesday afternoon-thursday afternoon-friday";
+}
+
+#timetable .table .cell div {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+#timetable input[type="checkbox"] {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+#timetable input[type="checkbox"]:hover+div {
+    background-color: var(--color-neutral-200);
+}
+
+#timetable input[type="checkbox"]:checked+div {
+    background-color: var(--color-secondary-500);
+}
+
+#timetable .cell {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 64px;
+}
+
+#timetable .void {
+    grid-area: void;
+    border-right: var(--border);
+    border-bottom: var(--border);
+}
+
+#timetable .monday {
+    grid-area: monday;
+    border-right: var(--border);
+    border-top: var(--border);
+    border-bottom: var(--border);
+    background-color: var(--color-neutral-50);
+}
+
+#timetable .tuesday {
+    grid-area: tuesday;
+    border-right: var(--border);
+    border-top: var(--border);
+    border-bottom: var(--border);
+    background-color: var(--color-neutral-50);
+}
+
+#timetable .wednesday {
+    grid-area: wednesday;
+    border-right: var(--border);
+    border-top: var(--border);
+    border-bottom: var(--border);
+    background-color: var(--color-neutral-50);
+}
+
+#timetable .thursday {
+    grid-area: thursday;
+    border-right: var(--border);
+    border-top: var(--border);
+    border-bottom: var(--border);
+    background-color: var(--color-neutral-50);
+}
+
+#timetable .friday {
+    grid-area: friday;
+    border-top: var(--border);
+    border-bottom: var(--border);
+    border-right: var(--border);
+    background-color: var(--color-neutral-50);
+}
+
+#timetable .morning {
+    grid-area: morning;
+    border-right: var(--border);
+    border-bottom: var(--border);
+    border-left: var(--border);
+    background-color: var(--color-neutral-50);
+}
+
+#timetable .morning-monday {
+    grid-area: morning-monday;
+    border-right: var(--border);
+    border-bottom: var(--border);
+}
+
+#timetable .morning-tuesday {
+    grid-area: morning-tuesday;
+    border-right: var(--border);
+    border-bottom: var(--border);
+}
+
+#timetable .morning-wednesday {
+    grid-area: morning-wednesday;
+    border-right: var(--border);
+    border-bottom: var(--border);
+}
+
+#timetable .morning-thursday {
+    grid-area: morning-thursday;
+    border-right: var(--border);
+    border-bottom: var(--border);
+}
+
+#timetable .morning-friday {
+    grid-area: morning-friday;
+    border-bottom: var(--border);
+    border-right: var(--border);
+}
+
+
+#timetable .afternoon {
+    grid-area: afternoon;
+    border-right: var(--border);
+    border-bottom: var(--border);
+    border-left: var(--border);
+    background-color: var(--color-neutral-50);
+}
+
+#timetable .afternoon-monday {
+    grid-area: afternoon-monday;
+    border-right: var(--border);
+    border-bottom: var(--border);
+}
+
+#timetable .afternoon-tuesday {
+    grid-area: afternoon-tuesday;
+    border-right: var(--border);
+    border-bottom: var(--border);
+}
+
+#timetable .afternoon-wednesday {
+    grid-area: afternoon-wednesday;
+    border-right: var(--border);
+    border-bottom: var(--border);
+}
+
+#timetable .afternoon-thursday {
+    grid-area: afternoon-thursday;
+    border-right: var(--border);
+    border-bottom: var(--border);
+}
+
+#timetable .afternoon-friday {
+    grid-area: afternoon-friday;
+    border-bottom: var(--border);
+    border-right: var(--border);
+}

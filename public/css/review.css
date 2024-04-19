@@ -1,0 +1,42 @@
+#review {
+    overflow-y: scroll;
+}
+
+#review .review-section {
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--color-neutral-500);
+}
+
+#review .review-section:last-child {
+    border-bottom: none;
+}
+
+#review .review-section h3 {
+    font-size: 1.5rem;
+    color: var(--color-neutral-400);
+    margin-bottom: 12px;
+}
+
+#review .review-item {
+    margin-bottom: 15px;
+}
+
+#review .review-item label {
+    color: var(--color-neutral-500);
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+#review .review-item p,
+#review .review-item ul li {
+    color: var(--color-neutral-300);
+    font-size: 1.1rem;
+}
+
+#review .review-item ul {
+    padding-left: 17px;
+}
+
+#review .review-item ul li {
+    padding-bottom: 3px;
+}

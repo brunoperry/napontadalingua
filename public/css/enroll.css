@@ -1,0 +1,151 @@
+:root {
+    --num-steps: 4;
+    --speed2: 1s;
+}
+
+body {
+    --header-height: 90px;
+    --footer-height: 120px;
+    display: grid;
+    grid-template-rows: var(--header-height) 1fr var(--footer-height);
+    height: 100vh;
+    background-color: var(--color-neutral-100);
+    opacity: 0;
+    transition: opacity var(--speed2) ease;
+}
+
+/* HEADER */
+header {
+    display: flex;
+    padding: 20px;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--color-primary-500);
+}
+
+header h2 {
+    font-size: 2.3rem;
+    color: var(--color-neutral-50);
+}
+
+header p {
+    color: var(--color-neutral-50);
+    font-size: 1.3rem;
+}
+
+main {
+    --counter-height: 64px;
+    --actions-height: 45px;
+    position: relative;
+    display: grid;
+    grid-template-rows: var(--counter-height) 1fr var(--actions-height);
+    gap: 20px;
+    margin: 20px 0;
+    min-height: initial;
+}
+
+#steps-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    gap: 20px;
+}
+
+.step-value {
+    display: flex;
+    align-items: flex-end;
+}
+
+.step-value h2 {
+    display: flex;
+    font-size: 4rem;
+    line-height: 4rem;
+    color: var(--color-primary-500);
+}
+
+.step-value h4 {
+    font-size: 1.4rem;
+    line-height: 3rem;
+    color: var(--color-primary-500);
+    font-weight: normal;
+}
+
+#step-title {
+    font-size: 2rem;
+    color: var(--color-neutral-500);
+    line-height: 2rem;
+}
+
+
+form {
+    position: relative;
+    display: block;
+    /* overflow-y: scroll; */
+}
+
+#steps-container {
+    position: absolute;
+    display: flex;
+    inset: 0;
+    width: calc(100% * var(--num-steps));
+    transition: transform var(--speed) ease;
+}
+
+.meta h4 {
+    display: flex;
+    justify-content: space-between;
+}
+
+.meta h4 p {
+    color: var(--color-neutral-300);
+    font-size: 1.2rem;
+    padding-bottom: 5px;
+}
+
+.meta h4 p.reg {
+    font-weight: normal;
+}
+
+.actions {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+
+footer {
+    display: flex;
+    padding: 20px;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--color-neutral-500);
+}
+
+footer .info {
+    display: none;
+}
+
+footer .modality-info,
+footer .student-info {
+    color: var(--color-neutral-50);
+    font-size: 0.8rem;
+    max-width: 250px;
+}
+
+footer .modality-info sup,
+footer .student-info sup {
+    color: var(--color-neutral-50);
+}
+
+
+footer .timetable-info h4 {
+    font-size: 1.6rem;
+    color: var(--color-neutral-50);
+}
+
+footer .timetable-info p {
+    font-size: 0.9rem;
+    line-height: 1.5rem;
+    color: var(--color-neutral-50);
+}

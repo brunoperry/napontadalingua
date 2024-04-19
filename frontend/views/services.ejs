@@ -1,8 +1,0 @@
-<section id="services">
-  <div class="inner-section">
-    <label class="section-tab">Serviços</label>
-    <% for(var i=0; i<data.services.length; i++) { %>
-        <%- include('./partials/servicecard.ejs', {service: data.services[i], index:i+1}) %>
-    <% } %>
-  </div>
-</section>

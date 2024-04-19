@@ -1,0 +1,222 @@
+:root {
+    --color-primary-50: #E0F9FF;
+    --color-primary-100: #C2F4FF;
+    --color-primary-200: #80E8FF;
+    --color-primary-300: #42DCFF;
+    --color-primary-400: #00D0FF;
+    --color-primary-500: #009FC1;
+    --color-primary-600: #007D99;
+    --color-primary-700: #006075;
+    --color-primary-800: #003E4D;
+    --color-primary-900: #002129;
+    --color-primary-950: #001114;
+
+    --color-secondary-50: #FEF3EC;
+    --color-secondary-100: #FDE6D8;
+    --color-secondary-200: #FBCBAD;
+    --color-secondary-300: #F9B286;
+    --color-secondary-400: #F6965A;
+    --color-secondary-500: #F47C31;
+    --color-secondary-600: #DF5D0C;
+    --color-secondary-700: #A94709;
+    --color-secondary-800: #6F2E06;
+    --color-secondary-900: #3A1803;
+    --color-secondary-950: #1D0C02;
+
+    --color-neutral-50: #EEEFF2;
+    --color-neutral-100: #D9DCE2;
+    --color-neutral-200: #B6BDC8;
+    --color-neutral-300: #919AAC;
+    --color-neutral-400: #6B788E;
+    --color-neutral-500: #50596A;
+    --color-neutral-600: #404754;
+    --color-neutral-700: #303640;
+    --color-neutral-800: #21252C;
+    --color-neutral-900: #0F1114;
+    --color-neutral-950: #090A0C;
+
+    --max-width: 1256px;
+    --padding: 10px;
+
+    --stroke-width: 3px;
+    --menu-font-size: calc(1rem + 0.3004534vw);
+    --menu-height: 192px;
+
+
+    --font-amiko: "Amiko", sans-serif;
+    --font-roboto: "Roboto", sans-serif;
+
+    --speed: 0.3s;
+
+    --shadow: 0px 2px 4px 0px #3e344533;
+}
+
+* {
+    font-family: var(--font-amiko);
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: var(--color-neutral-700);
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body,
+html {
+    width: 100%;
+    min-height: 100dvh;
+}
+
+
+/* MENU */
+npl-menu {
+    position: fixed;
+    display: flex;
+    width: 100%;
+    height: var(--menu-height);
+    top: 0;
+    left: 0;
+    background-color: var(--color-neutral-50);
+    transition: transform var(--speed) ease-out;
+    z-index: 9999;
+}
+
+npl-menu .content {
+    flex-direction: row;
+    align-items: flex-end;
+    max-width: var(--max-width);
+    padding: 20px 0;
+}
+
+npl-menu .logo {
+    width: 500px;
+    height: auto;
+    overflow: visible;
+}
+
+npl-menu #hair path {
+    transform-origin: 50% 50%;
+}
+
+npl-menu ul {
+    display: flex;
+    list-style: none;
+    padding-bottom: 20px;
+    gap: 10px;
+}
+
+npl-menu a {
+    color: var(--color-primary-500);
+    text-decoration: none;
+    padding: 10px 20px;
+    font-size: var(--menu-font-size);
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+npl-menu a:hover {
+    color: var(--color-neutral-100);
+    text-decoration: none;
+    background-color: var(--color-neutral-500);
+}
+
+main {
+    display: block;
+    min-height: 100dvh;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: space-between;
+    margin: 0 auto;
+    gap: 20px;
+}
+
+a,
+button {
+    border: none;
+    background-color: transparent;
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    font-weight: bold;
+    padding: 10px 20px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+a:active,
+button:active {
+    scale: 0.98;
+}
+
+a:disabled,
+button:disabled {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+a:hover,
+button:hover {
+    transform: scale(1.03);
+}
+
+a.orange,
+button.orange {
+    color: var(--color-secondary-100);
+    background-color: var(--color-secondary-500);
+}
+
+a.blue-outline,
+button.blue-outline {
+    background-color: transparent;
+    border: 3px solid var(--color-primary-500);
+    color: var(--color-primary-500);
+}
+
+a.blue,
+button.blue {
+    background-color: var(--color-primary-500);
+    border: 3px solid var(--color-primary-500);
+    color: var(--color-neutral-50);
+}
+
+a.clear,
+button.clear {
+    background-color: var(--color-neutral-50);
+    color: var(--color-neutral-500);
+}
+
+a.dark,
+button.dark {
+    background-color: var(--color-neutral-500);
+    color: var(--color-neutral-50);
+}
+
+p {
+    font-family: var(--font-roboto);
+    font-size: 17px;
+    line-height: 26px;
+    color: var(--color-neutral-500);
+    letter-spacing: 0.3px;
+}
+
+span {
+    font-family: var(--font-roboto);
+    font-size: 12px;
+    line-height: 26px;
+    color: var(--color-neutral-500);
+    font-style: italic;
+    letter-spacing: 0.3px;
+}

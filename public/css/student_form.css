@@ -1,0 +1,8 @@
+#student {
+    padding-bottom: 40px;
+    overflow-y: scroll;
+}
+
+#student .form-control {
+    gap: 2px;
+}

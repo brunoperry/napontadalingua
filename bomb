@@ -1,0 +1,33 @@
+<?php
+
+$VERSION = '1.0.0';
+ob_implicit_flush();
+ob_start();
+
+ini_set('display_errors', 1);
+require 'bomb_cli/Bomb.php';
+require 'App/Core/functions.php';
+require 'App/Core/Dotenv.php';
+
+if (PHP_SAPI != 'cli') {
+    die("bomb command line interface tool can only be run in the command line");
+}
+
+//Load enviroment vars
+$dotenv = new Dotenv();
+$dotenv->load();
+
+$action = $argv[1] ?? '';
+$action = explode(":", $action);
+$action = $action[0];
+
+$bomb = new Bomb();
+if (empty($action)) {
+    call_user_func_array([$bomb, 'help'], [$VERSION]);
+} else {
+    if (is_callable([$bomb, $action])) {
+        call_user_func_array([$bomb, $action], [$argv]);
+    } else {
+        echo "\n\r\e[41m Unkonwn Command: '$action' \033[0m\n\n type \e[34mphp bomb\033[0m for help.\n\n";
+    }
+};

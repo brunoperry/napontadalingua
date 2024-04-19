@@ -1,0 +1,76 @@
+#tutor {
+    padding-bottom: 40px;
+    overflow-y: scroll;
+}
+
+#tutor h4 {
+    display: flex;
+    justify-content: space-between;
+}
+
+#tutor .form-control {
+    gap: 2px;
+}
+
+#same-address {
+    width: fit-content;
+}
+
+#auth-persons {
+    margin: 0 -20px;
+    padding: 20px;
+    background-color: var(--color-primary-500);
+}
+
+#auth-persons p {
+    font-size: 1.2rem;
+    color: var(--color-neutral-50);
+}
+
+#auth-persons p strong {
+    color: var(--color-neutral-50);
+}
+
+#auth-persons label {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: var(--color-neutral-50);
+}
+
+#auth-persons input[type="radio"] {
+    display: grid;
+    place-content: center;
+    width: 32px;
+    height: 32px;
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: var(--color-neutral-50);
+    margin: 0;
+    border-radius: 50%;
+}
+
+#auth-persons input[type="radio"]::before {
+    content: "";
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    scale: 0;
+    box-shadow: inset 1em 1em var(--color-neutral-500);
+}
+
+#auth-persons input[type="radio"]:checked::before {
+    scale: 1;
+}
+
+#auth-persons .person {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 0.5px solid var(--color-neutral-50);
+}
+
+#auth-persons .person button {
+    color: var(--color-neutral-50);
+    font-size: 2rem;
+    font-weight: bold;
+}

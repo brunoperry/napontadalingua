@@ -1,0 +1,75 @@
+#modalities {
+    justify-content: center;
+    overflow-y: scroll;
+}
+
+#modalities .form-control {
+    gap: 50px;
+}
+
+.modality-type {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.modality-type h4 {
+    border-bottom: 2px solid var(--color-neutral-500);
+    color: var(--color-neutral-500);
+    font-size: 1.2rem;
+    padding-bottom: 5px;
+}
+
+.modality-type h4 sup {
+    color: var(--color-neutral-500);
+    font-size: 0.7rem;
+}
+
+.modality-type span {
+    text-align: right;
+    margin-top: 2px;
+}
+
+.modality-item {
+    position: relative;
+    display: flex;
+    flex: 1;
+    cursor: pointer;
+    border-bottom: 0.5px solid var(--color-neutral-500);
+}
+
+.modality-item input {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    background-color: rebeccapurple;
+    cursor: pointer;
+    opacity: 0;
+    z-index: 9999;
+}
+
+.modality-item input[name="modality"]:hover+.modality-container {
+    background-color: var(--color-neutral-200);
+}
+
+.modality-item input[name="modality"]:checked+.modality-container {
+    background-color: var(--color-neutral-500);
+}
+
+.modality-item input[name="modality"]:checked+.modality-container p {
+    color: var(--color-neutral-50);
+    font-weight: bold;
+}
+
+.modality-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
+    padding: 0 10px;
+    height: 64px;
+}
+
+.modality-container p {
+    font-weight: normal;
+}

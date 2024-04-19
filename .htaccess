@@ -1,0 +1,19 @@
+Options -Indexes
+RewriteEngine On
+
+#deny access to .env
+<Files .env>
+    Order allow,deny
+    Deny from all
+</Files>
+
+#deny accessto cli files
+RewriteRule ^(cli)$ index.php?url=$1 [L,QSA]
+RewriteRule ^(cli/) index.php?url=$1 [L,QSA]
+
+#accept loading of files and dirs
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+#clear query strings and make clean urls
+RewriteRule ^(.*)$ index.php?url=$1 [L,QSA]
