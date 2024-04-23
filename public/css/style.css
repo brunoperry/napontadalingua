@@ -74,6 +74,7 @@ html {
 
 body,
 html {
+    /* position: relative; */
     width: 100%;
     min-height: 100dvh;
 }
@@ -112,14 +113,33 @@ npl-menu #hair path {
 npl-menu ul {
     display: flex;
     list-style: none;
-    padding-bottom: 20px;
+    align-items: flex-end;
+    height: 64px;
     gap: 10px;
+
+    li {
+        display: flex;
+        align-items: center;
+        height: inherit;
+        justify-content: center;
+    }
+}
+
+npl-menu #login-button {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+    /* padding: 0; */
 }
 
 npl-menu a {
+    display: flex;
+    align-items: center;
     color: var(--color-primary-500);
     text-decoration: none;
     padding: 10px 20px;
+    height: inherit;
     font-size: var(--menu-font-size);
     font-weight: bold;
     text-transform: uppercase;
@@ -129,6 +149,10 @@ npl-menu a:hover {
     color: var(--color-neutral-100);
     text-decoration: none;
     background-color: var(--color-neutral-500);
+
+    svg {
+        fill: var(--color-neutral-100);
+    }
 }
 
 main {

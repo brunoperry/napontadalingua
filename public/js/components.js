@@ -68,13 +68,10 @@ class NPLMenu extends HTMLElement {
     this.#logoHair.forEach((hair) => {
       hair.update(performance.now() / 100);
     });
-
-    console.log("playLogoAnim");
   }
   #stopLogoAnim() {
     if (this.#animID) cancelAnimationFrame(this.#animID);
     this.#animID = null;
-    console.log("stopLogoAnim");
   }
 }
 customElements.define("npl-menu", NPLMenu);

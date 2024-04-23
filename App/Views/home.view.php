@@ -3,6 +3,7 @@
  <main>
      <section id="start">
          <div class="content">
+             <?php include 'partials/background.php' ?>
              <?php include 'partials/start.php' ?>
          </div>
      </section>

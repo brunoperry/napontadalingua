@@ -15,6 +15,7 @@
 }
 
 #start .content {
+    position: relative;
     padding-top: var(--menu-height);
 }
 
@@ -28,6 +29,7 @@ npl-gallery {
     height: 100%;
     max-width: var(--max-width);
     margin: 0 auto;
+    container-type: inline-size;
 }
 
 npl-gallery .items {

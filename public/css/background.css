@@ -1,0 +1,14 @@
+.npl-background {
+    top: var(--menu-height);
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+    /* z-index: -1; */
+    overflow: hidden;
+}
+
+.npl-background svg {
+    position: absolute;
+    opacity: 0.1;
+    mix-blend-mode: multiply;
+}

@@ -12,23 +12,23 @@
 
     <div class="form-group">
         <div class="form-control">
-            <label for="fullname-input">Nome<sup>*</sup></label>
-            <input type="text" name="fullname" id="fullname-input" placeholder="Escreva o nome do aluno">
+            <label for="student-fullname-input">Nome<sup>*</sup></label>
+            <input type="text" name="fullname" id="student-fullname-input" placeholder="Escreva o nome do aluno">
         </div>
     </div>
     <div class="form-group">
         <div class="form-control">
-            <label for="address-input">Morada<sup>*</sup></label>
-            <input type="text" name="address" id="address-input" placeholder="ex: Rua A, n. 1, 1-drt.">
+            <label for="student-address-input">Morada<sup>*</sup></label>
+            <input type="text" name="address" id="student-address-input" placeholder="ex: Rua A, n. 1, 1-drt.">
         </div>
         <div class="form-control-h">
             <div class="form-control">
-                <label for="pob-input">C. Postal<sup>*</sup></label>
-                <input type="text" name="pob" id="pob-input" placeholder="ex: 1700-123">
+                <label for="student-pob-input">C. Postal<sup>*</sup></label>
+                <input type="text" name="pob" id="student-pob-input" placeholder="ex: 1700-123">
             </div>
             <div class="form-control">
-                <label for="mobile-input">Telemóvel<sup>*</sup></label>
-                <input type="text" name="mobile" id="mobile-input" placeholder="ex: 92 222 22 22">
+                <label for="student-mobile-input">Telemóvel<sup>*</sup></label>
+                <input type="text" name="mobile" id="student-mobile-input" placeholder="ex: 92 222 22 22">
             </div>
         </div>
     </div>
@@ -36,23 +36,23 @@
     <div class="form-group">
         <div class="form-control-h">
             <div class="form-control">
-                <label for="dob-input">Data nascimento<sup>*</sup></label>
-                <input type="date" name="dob" id="dob-input">
+                <label for="student-dob-input">Data nascimento<sup>*</sup></label>
+                <input type="date" name="dob" id="student-dob-input">
             </div>
             <div class="form-control">
-                <label for="cc-input">C.C</label>
-                <input type="text" name="cc" id="cc-input" placeholder="ex: 123456789">
+                <label for="student-cc-input">C.C</label>
+                <input type="text" name="cc" id="student-cc-input" placeholder="ex: 123456789">
             </div>
         </div>
 
         <div class="form-control-h">
             <div class="form-control">
-                <label for="nif-input">N.I.F</label>
-                <input type="text" name="nif" id="nif-input" placeholder="ex: 123456789">
+                <label for="student-nif-input">N.I.F</label>
+                <input type="text" name="nif" id="student-nif-input" placeholder="ex: 123456789">
             </div>
             <div class="form-control">
-                <label for="sns-input">S.N.S</label>
-                <input type="text" name="sns" id="sns-input" placeholder="ex: 123456789">
+                <label for="student-sns-input">S.N.S</label>
+                <input type="text" name="sns" id="student-sns-input" placeholder="ex: 123456789">
             </div>
         </div>
     </div>

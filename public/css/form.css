@@ -10,9 +10,15 @@
 }
 
 .form-control label {
+    position: relative;
     color: var(--color-neutral-500);
     font-size: 1.2rem;
     font-weight: bold;
+}
+
+.form-control label sup {
+    position: absolute;
+    color: inherit;
 }
 
 .form-control-h {
@@ -84,6 +90,11 @@ textarea:focus {
     box-shadow: var(--shadow);
 }
 
+input[type="date"]::-webkit-datetime-edit-fields-wrapper {
+    padding: 0;
+    color: var(--color-neutral-300);
+}
+
 .iconed {
     --icon-size: 40px;
     display: flex;
@@ -116,4 +127,8 @@ textarea:focus {
 
 .iconed.left input {
     padding-left: calc(var(--icon-size) + 10px);
+}
+
+sup {
+    color: inherit;
 }

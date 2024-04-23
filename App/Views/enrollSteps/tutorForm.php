@@ -1,8 +1,8 @@
 <div id="tutor" class="form-step" data-title="Dados pessoais encarregado de educação">
     <div class="form-group">
         <div class="form-control">
-            <label for="fullname-input">Nome<sup>*</sup></label>
-            <input type="text" name="fullname" id="fullname-input" placeholder="Escreva o nome do encarregado">
+            <label for="tutor-fullname-input">Nome<sup>*</sup></label>
+            <input type="text" name="fullname" id="tutor-fullname-input" placeholder="Escreva o nome do encarregado">
         </div>
         <div class="form-control">
             <label for="next-of-kin-input">Grau de parentesco<sup>*</sup></label>
@@ -12,17 +12,17 @@
     <div class="form-group">
         <button id="same-address" class="dark">Usar anterior</button>
         <div class="form-control">
-            <label for="address-input">Morada<sup>*</sup></label>
-            <input type="text" name="address" id="address-input" placeholder="ex: Rua A, n. 1, 1-drt.">
+            <label for="tutor-address-input">Morada<sup>*</sup></label>
+            <input type="text" name="address" id="tutor-address-input" placeholder="ex: Rua A, n. 1, 1-drt.">
         </div>
         <div class="form-control-h">
             <div class="form-control">
-                <label for="pob-input">C. Postal<sup>*</sup></label>
-                <input type="text" name="pob" id="pob-input" placeholder="ex: 1700-123">
+                <label for="tutor-pob-input">C. Postal<sup>*</sup></label>
+                <input type="text" name="pob" id="tutor-pob-input" placeholder="ex: 1700-123">
             </div>
             <div class="form-control">
-                <label for="mobile-input">Telemóvel<sup>*</sup></label>
-                <input type="text" name="mobile" id="mobile-input" placeholder="ex: 92 222 22 22">
+                <label for="tutor-mobile-input">Telemóvel<sup>*</sup></label>
+                <input type="text" name="mobile" id="tutor-mobile-input" placeholder="ex: 92 222 22 22">
             </div>
         </div>
         <div class="form-control-h">

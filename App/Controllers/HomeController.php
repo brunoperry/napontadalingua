@@ -19,8 +19,8 @@ class HomeController extends Controller
         $networks = $model->get_networks();
 
         $data = [
-            'css' => 'home',
-            'js' => 'home',
+            'css' => ['home', 'background'],
+            'js' => ['home', 'background'],
             'start' => [
                 'gallery' => $gallery_images,
                 'card-title' => 'Inscrições abertas 2024/2025',

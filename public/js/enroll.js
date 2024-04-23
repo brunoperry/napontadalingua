@@ -47,13 +47,14 @@ window.onload = () => {
     gotoStep(currentStep);
 
     if (currentStep === totalSteps - 1) {
-      nextButton.innerText = "Submit";
       enrollData.service = serviceForm.getReviewData();
       enrollData.modality = modalityForm.getReviewData();
       enrollData.timetable = timetableForm.getReviewData();
       enrollData.student = studentForm.getReviewData();
       enrollData.tutor = tutorForm.getReviewData();
       review.setData(enrollData);
+    } else {
+      nextButton.innerText = "Seguinte >";
     }
   };
   const backStep = () => {
@@ -108,6 +109,11 @@ const updateSteps = () => {
   if (currentStep === totalSteps - 1) nextButton.disabled = true;
   else if (stepObjects[currentStep].isReady) nextButton.disabled = false;
   else nextButton.disabled = true;
+
+  if (currentStep === totalSteps - 1) {
+    nextButton.innerText = "Submeter";
+    nextButton.disabled = false;
+  } else nextButton.innerText = "Seguinte >";
   updateCounter();
 };
 
@@ -299,32 +305,31 @@ class TimetableForm {
     return this.#totalCells === this.#maxCells ? true : false;
   }
 }
-
 class StudentForm {
   #container;
   constructor(callback) {
     this.#container = document.querySelector("#student");
-    this.#container.querySelector("#fullname-input").oninput = () => callback();
-    this.#container.querySelector("#address-input").oninput = () => callback();
-    this.#container.querySelector("#pob-input").oninput = () => callback();
-    this.#container.querySelector("#mobile-input").oninput = () => callback();
-    this.#container.querySelector("#dob-input").oninput = () => callback();
-    this.#container.querySelector("#cc-input").oninput = () => callback();
-    this.#container.querySelector("#nif-input").oninput = () => callback();
-    this.#container.querySelector("#sns-input").oninput = () => callback();
+    this.#container.querySelector("#student-fullname-input").oninput = () => callback();
+    this.#container.querySelector("#student-address-input").oninput = () => callback();
+    this.#container.querySelector("#student-pob-input").oninput = () => callback();
+    this.#container.querySelector("#student-mobile-input").oninput = () => callback();
+    this.#container.querySelector("#student-dob-input").oninput = () => callback();
+    this.#container.querySelector("#student-cc-input").oninput = () => callback();
+    this.#container.querySelector("#student-nif-input").oninput = () => callback();
+    this.#container.querySelector("#student-sns-input").oninput = () => callback();
     this.#container.querySelector("#school-input").oninput = () => callback();
     this.#container.querySelector("#notes-input").oninput = () => callback();
   }
   getReviewData() {
     return {
-      name: this.#container.querySelector("#fullname-input").value || "...",
-      address: this.#container.querySelector("#address-input").value || "...",
-      pob: this.#container.querySelector("#pob-input").value || "...",
-      mobile: this.#container.querySelector("#mobile-input").value || "...",
-      dob: this.#container.querySelector("#dob-input").value || "...",
-      cc: this.#container.querySelector("#cc-input").value || "...",
-      nif: this.#container.querySelector("#nif-input").value || "...",
-      sns: this.#container.querySelector("#sns-input").value || "...",
+      name: this.#container.querySelector("#student-fullname-input").value || "...",
+      address: this.#container.querySelector("#student-address-input").value || "...",
+      pob: this.#container.querySelector("#student-pob-input").value || "...",
+      mobile: this.#container.querySelector("#student-mobile-input").value || "...",
+      dob: this.#container.querySelector("#student-dob-input").value || "...",
+      cc: this.#container.querySelector("#student-cc-input").value || "...",
+      nif: this.#container.querySelector("#student-nif-input").value || "...",
+      sns: this.#container.querySelector("#student-sns-input").value || "...",
       school: this.#container.querySelector("#school-input").value || "...",
       notes: this.#container.querySelector("#notes-input").value || "...",
     };
@@ -333,32 +338,31 @@ class StudentForm {
     return {
       studentNum: this.#container.querySelector("#student-num").innerText,
       year: this.#container.querySelector("#year").innerText,
-      name: this.#container.querySelector("#fullname-input").value,
-      address: this.#container.querySelector("#address-input").value,
-      pob: this.#container.querySelector("#pob-input").value,
-      mobile: this.#container.querySelector("#mobile-input").value,
-      dob: this.#container.querySelector("#dob-input").value,
-      cc: this.#container.querySelector("#cc-input").value,
-      nif: this.#container.querySelector("#nif-input").value,
-      sns: this.#container.querySelector("#sns-input").value,
+      name: this.#container.querySelector("#student-fullname-input").value,
+      address: this.#container.querySelector("#student-address-input").value,
+      pob: this.#container.querySelector("#student-pob-input").value,
+      mobile: this.#container.querySelector("#student-mobile-input").value,
+      dob: this.#container.querySelector("#student-dob-input").value,
+      cc: this.#container.querySelector("#student-cc-input").value,
+      nif: this.#container.querySelector("#student-nif-input").value,
+      sns: this.#container.querySelector("#student-sns-input").value,
       school: this.#container.querySelector("#school-input").value,
       notes: this.#container.querySelector("#notes-input").value,
     };
   }
   get isReady() {
     const ready =
-      this.#container.querySelector("#fullname-input").value !== "" &&
-      this.#container.querySelector("#address-input").value !== "" &&
-      this.#container.querySelector("#pob-input").value !== "" &&
-      this.#container.querySelector("#mobile-input").value !== "" &&
-      this.#container.querySelector("#dob-input").value !== "" &&
+      this.#container.querySelector("#student-fullname-input").value !== "" &&
+      this.#container.querySelector("#student-address-input").value !== "" &&
+      this.#container.querySelector("#student-pob-input").value !== "" &&
+      this.#container.querySelector("#student-mobile-input").value !== "" &&
+      this.#container.querySelector("#student-dob-input").value !== "" &&
       this.#container.querySelector("#school-input").value !== ""
         ? true
         : false;
     return ready;
   }
 }
-
 class TutorForm {
   #callback;
   #container;
@@ -378,12 +382,11 @@ class TutorForm {
       authInput.value = "";
     };
 
-    this.#container.querySelector("#fullname-input").oninput = () => callback();
-    this.#container.querySelector("#address-input").oninput = () => callback();
-    this.#container.querySelector("#pob-input").oninput = () => callback();
-    this.#container.querySelector("#mobile-input").oninput = () => callback();
+    this.#container.querySelector("#tutor-fullname-input").oninput = () => callback();
+    this.#container.querySelector("#tutor-address-input").oninput = () => callback();
+    this.#container.querySelector("#tutor-pob-input").oninput = () => callback();
+    this.#container.querySelector("#tutor-mobile-input").oninput = () => callback();
     this.#container.querySelector("#next-of-kin-input").oninput = () => callback();
-    this.#container.querySelector("#mobile-input").oninput = () => callback();
     this.#container.querySelector("#email-input").oninput = () => callback();
     this.#container.querySelector("#auth-yes").onchange = () => callback();
     this.#container.querySelector("#auth-no").onchange = () => callback();
@@ -406,8 +409,8 @@ class TutorForm {
   }
 
   setData(data) {
-    this.#container.querySelector("#address-input").value = data.address;
-    this.#container.querySelector("#pob-input").value = data.pob;
+    this.#container.querySelector("#tutor-address-input").value = data.address;
+    this.#container.querySelector("#tutor-pob-input").value = data.pob;
   }
   getReviewData() {
     let authPersons = Array.from(this.#container.querySelectorAll(".person p")).map(
@@ -415,11 +418,11 @@ class TutorForm {
     );
     if (authPersons.length === 0) authPersons = ["..."];
     return {
-      name: this.#container.querySelector("#fullname-input").value || "...",
+      name: this.#container.querySelector("#tutor-fullname-input").value || "...",
       nextOfKin: this.#container.querySelector("#next-of-kin-input").value || "...",
-      address: this.#container.querySelector("#address-input").value || "...",
-      pob: this.#container.querySelector("#pob-input").value || "...",
-      mobile: this.#container.querySelector("#mobile-input").value || "...",
+      address: this.#container.querySelector("#tutor-address-input").value || "...",
+      pob: this.#container.querySelector("#tutor-pob-input").value || "...",
+      mobile: this.#container.querySelector("#tutor-mobile-input").value || "...",
       homePhone: this.#container.querySelector("#home-phone-input").value || "...",
       workPhone: this.#container.querySelector("#work-phone-input").value || "...",
       email: this.#container.querySelector("#email-input").value || "...",
@@ -431,11 +434,11 @@ class TutorForm {
   }
   getData() {
     return {
-      name: this.#container.querySelector("#fullname-input").value,
+      name: this.#container.querySelector("#tutor-fullname-input").value,
       nextOfKin: this.#container.querySelector("#next-of-kin-input").value,
-      address: this.#container.querySelector("#address-input").value,
-      pob: this.#container.querySelector("#pob-input").value,
-      mobile: this.#container.querySelector("#mobile-input").value,
+      address: this.#container.querySelector("#tutor-address-input").value,
+      pob: this.#container.querySelector("#tutor-pob-input").value,
+      mobile: this.#container.querySelector("#tutor-mobile-input").value,
       homePhone: this.#container.querySelector("#home-phone-input").value,
       workPhone: this.#container.querySelector("#work-phone-input").value,
       email: this.#container.querySelector("#email-input").value,
@@ -450,11 +453,11 @@ class TutorForm {
       this.#container.querySelector("#auth-yes").checked ||
       this.#container.querySelector("#auth-no").checked;
     const ready =
-      this.#container.querySelector("#fullname-input").value !== "" &&
-      this.#container.querySelector("#address-input").value !== "" &&
+      this.#container.querySelector("#tutor-fullname-input").value !== "" &&
+      this.#container.querySelector("#tutor-address-input").value !== "" &&
       this.#container.querySelector("#next-of-kin-input").value !== "" &&
-      this.#container.querySelector("#pob-input").value !== "" &&
-      this.#container.querySelector("#mobile-input").value !== "" &&
+      this.#container.querySelector("#tutor-pob-input").value !== "" &&
+      this.#container.querySelector("#tutor-mobile-input").value !== "" &&
       this.#container.querySelector("#email-input").value !== "" &&
       isAuth
         ? true
@@ -462,7 +465,6 @@ class TutorForm {
     return ready;
   }
 }
-
 class Review {
   #container;
   constructor() {
@@ -510,7 +512,6 @@ class Review {
     });
   }
 }
-
 class Footer {
   #content;
   constructor() {
