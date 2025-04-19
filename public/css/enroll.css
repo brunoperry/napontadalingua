@@ -149,3 +149,29 @@ footer .timetable-info p {
     line-height: 1.5rem;
     color: var(--color-neutral-50);
 }
+
+#loader {
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    inset: 0;
+    background-color: var(--color-neutral-800);
+    transition: all var(--speed) ease;
+    transition-behavior: allow-discrete;
+}
+
+#loader[show] {
+    display: flex;
+}
+
+#loader .logo {
+    max-width: 50%;
+    max-height: fit-content;
+    opacity: 0.2;
+}
+
+#loader h1 {
+    color: var(--color-neutral-100);
+}

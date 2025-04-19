@@ -4,11 +4,11 @@
 </header>
 <main>
     <div id="steps-info">
+        <h3 id="step-title">Title</h3>
         <div class="step-value">
             <h2 id="step-label">00</h2>
             <h4 id="total-steps">/06</h4>
         </div>
-        <h3 id="step-title">Title</h3>
     </div>
     <form action="" method="post">
         <div id="steps-container">
@@ -41,3 +41,9 @@
     </div>
     <button class="clear">Contacte-nos</button>
 </footer>
+
+
+<div id="loader">
+    <?= icon('logo_head', 'logo') ?>
+    <h1>Aguarde</h1>
+</div>

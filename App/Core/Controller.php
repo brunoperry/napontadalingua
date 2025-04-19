@@ -2,15 +2,23 @@
 
 namespace App\Core;
 
-use App\Enums\Roles;
 
-class Controller {
+class Controller
+{
     protected  $user;
-    
-    protected function get_json_response(array $data): mixed {
+    protected $request;
+
+    public function __construct()
+    {
+        $this->request = new Request();
+    }
+
+    protected function get_json_response(array $data): mixed
+    {
         return json_encode($data);
     }
-    protected function send_json_response(array $data):void {
+    protected function send_json_response(array $data): void
+    {
         header('Content-Type: application/json');
         echo json_encode($data);
     }

@@ -6,12 +6,15 @@ namespace App\Controllers;
 use App\Core\Controller;
 use App\Core\Template;
 use App\Models\EnrollModel;
+use App\Models\ModalitiesModel;
+use App\Models\ServicesModel;
 
 class EnrollController extends Controller
 {
     public function index()
     {
-        $model = new EnrollModel();
+        $serviceModel = new ServicesModel();
+        $modalitiesModel  = new ModalitiesModel();
         $data = [
             'css' => [
                 'enroll',
@@ -24,8 +27,8 @@ class EnrollController extends Controller
                 'form'
             ],
             'js' => 'enroll',
-            'services' => $model->get_services(),
-            'modalities' => $model->get_modalities(),
+            'services' => $serviceModel->get_services(),
+            'modalities' => $modalitiesModel->get_modalities(),
             'student_number' => $this->UUID(),
             'enroll_year' => date('Y') . '/' . (date('Y') + 1),
             'title' => 'Inscrição'
@@ -45,5 +48,14 @@ class EnrollController extends Controller
             if ($attempts > 1000) break;
         }
         return strtoupper($uuid);
+    }
+
+    public function do_enroll(): void
+    {
+        $post_data = $this->request->post();
+        $this->send_json_response([
+            'status' => 200,
+            'data' => $post_data
+        ]);
     }
 }

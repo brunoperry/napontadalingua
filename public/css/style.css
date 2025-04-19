@@ -66,6 +66,8 @@
     user-select: none;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    scrollbar-color: var(--color-primary-500) var(--color-primary-500);
+    scrollbar-width: thin;
 }
 
 html {
@@ -107,7 +109,9 @@ npl-menu .logo {
 }
 
 npl-menu #hair path {
+    will-change: transform;
     transform-origin: 50% 50%;
+    animation: hair 1s ease 0s infinite;
 }
 
 npl-menu ul {
@@ -243,4 +247,18 @@ span {
     color: var(--color-neutral-500);
     font-style: italic;
     letter-spacing: 0.3px;
+}
+
+@keyframes hair {
+    0% {
+        transform: scale(1) rotate(0);
+    }
+
+    50% {
+        transform: scale(0.7) rotate(10deg);
+    }
+
+    100% {
+        transform: scale(1) rotate(0);
+    }
 }

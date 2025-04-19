@@ -9,7 +9,7 @@ use App\Core\Model;
  */
 final class EnrollModel extends Model
 {
-    public string $table = 'enroll';
+    public string $table = 'enrollments';
     public string $primary_key = 'id';
 
     protected array $allowed_columns = [
@@ -22,27 +22,6 @@ final class EnrollModel extends Model
         'date_deleted',
         'deleted'
     ];
-
-    public function get_services(): array
-    {
-        $query = "SELECT * FROM services WHERE available= 1 ORDER BY order_index";
-        $data = $this->query($query)['data'];
-
-        foreach ($data as $key => $service) {
-            $data[$key]->availability = $this->get_availability($service);
-        }
-        return $data;
-    }
-    public function get_availability(object $service): bool
-    {
-        return ($service->total_vacancies  / 2) > $service->num_enrolls;
-    }
-
-    public function get_modalities(): array
-    {
-        $query = "SELECT * FROM modalities WHERE deleted = 0";
-        return $this->query($query)['data'];
-    }
 
     public function get_uuids(): array
     {

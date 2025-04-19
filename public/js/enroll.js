@@ -12,6 +12,8 @@ let previsousButton;
 let nextButton;
 let footer;
 
+let loader;
+
 let enrollData = {
   service: "",
   modality: "",
@@ -43,7 +45,12 @@ window.onload = () => {
   const nextStep = () => {
     previousStep = currentStep;
     currentStep++;
-    if (currentStep >= totalSteps) currentStep = totalSteps - 1;
+
+    if (currentStep >= totalSteps) {
+      submitEnroll();
+      return;
+      // currentStep = totalSteps - 1;
+    }
     gotoStep(currentStep);
 
     if (currentStep === totalSteps - 1) {
@@ -99,9 +106,13 @@ window.onload = () => {
   const review = new Review();
   stepObjects.push(review);
 
+  loader = new Loader();
+
   document.documentElement.style.setProperty("--num-steps", totalSteps);
   document.body.style.opacity = 1;
   steps[currentStep].style.opacity = 1;
+
+  // loader.show();
 };
 
 const updateSteps = () => {
@@ -130,6 +141,20 @@ const gotoStep = (step) => {
   steps[currentStep].style.opacity = 1;
   updateSteps();
   footer.update(currentStep);
+};
+
+const submitEnroll = async () => {
+  loader.show();
+  const form = document.querySelector("form");
+  const formData = new FormData(form);
+  const req = await fetch("/enroll", {
+    method: "POST",
+    body: formData,
+  });
+  const res = await req.json();
+
+  setTimeout(() => loader.hide(), 1000);
+  console.log(res);
 };
 
 class ServicesForm {
@@ -510,6 +535,24 @@ class Review {
     data.tutor.authPersons.forEach((person) => {
       authPersons.innerHTML += `<li>${person}</li>`;
     });
+  }
+}
+
+class Loader {
+  #container;
+  #isOpened = false;
+  constructor() {
+    this.#container = document.querySelector("#loader");
+  }
+  show() {
+    if (this.#isOpened) return;
+    this.#container.toggleAttribute("show");
+    this.#isOpened = true;
+  }
+  hide() {
+    if (!this.#isOpened) return;
+    this.#container.toggleAttribute("show");
+    this.#isOpened = false;
   }
 }
 class Footer {

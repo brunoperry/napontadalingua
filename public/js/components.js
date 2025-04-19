@@ -1,19 +1,12 @@
 class Hair {
-  #elem;
-  #speed;
   constructor(elem) {
-    this.#elem = elem;
-    this.#speed = Math.random() * 0.5 + 0.1;
+    elem.style.animationDuration = `${Math.random() * 2 + 0.2}s`;
+    elem.style.animationDelay = `${Math.random() * 2 + 0.2}s`;
 
     const bbox = elem.getBBox();
     const cx = bbox.x + bbox.width / 2;
     const cy = bbox.y + bbox.height / 2;
     elem.style.transformOrigin = `${cx}px ${cy}px`;
-  }
-
-  update(delta) {
-    let val = 0.85 + 0.35 * Math.sin(this.#speed * delta);
-    this.#elem.style.transform = `scale(${val})`;
   }
 }
 
@@ -22,19 +15,13 @@ class NPLMenu extends HTMLElement {
   #isHidden = false;
   #THRESHOLD = 20;
 
-  #logoHair = [];
-  #animID = null;
   constructor() {
     super();
 
     const elems = Array.from(this.querySelector("#hair").children);
     elems.forEach((elem) => {
-      this.#logoHair.push(new Hair(elem));
+      new Hair(elem);
     });
-
-    this.#playLogoAnim();
-    window.addEventListener("blur", () => this.#stopLogoAnim());
-    window.addEventListener("focus", () => this.#playLogoAnim());
   }
 
   connectedCallback() {
@@ -54,24 +41,10 @@ class NPLMenu extends HTMLElement {
   show() {
     this.style.transform = `translateY(0)`;
     this.#isHidden = false;
-    this.#playLogoAnim();
   }
   hide() {
     this.style.transform = `translateY(-100%)`;
     this.#isHidden = true;
-    this.#stopLogoAnim();
-  }
-
-  #playLogoAnim() {
-    if (this.#isHidden) return;
-    this.#animID = requestAnimationFrame(() => this.#playLogoAnim());
-    this.#logoHair.forEach((hair) => {
-      hair.update(performance.now() / 100);
-    });
-  }
-  #stopLogoAnim() {
-    if (this.#animID) cancelAnimationFrame(this.#animID);
-    this.#animID = null;
   }
 }
 customElements.define("npl-menu", NPLMenu);
